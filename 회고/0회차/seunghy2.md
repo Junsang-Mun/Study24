@@ -1,6 +1,6 @@
 # 0회차 회고
 
-> What is the answer to life, the universe, and everything?!
+> Hello World?!
 ## 무슨 이야기를 했나요?
 
 - 포인터와 배열에 대한 차이, 메모리에 대한 짧은 이야기, 질의응답
