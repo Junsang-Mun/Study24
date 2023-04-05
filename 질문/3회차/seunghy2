@@ -1,0 +1,3 @@
+# 3회차) Chapter 2. Dynamic Memory Management in C
+
+1. 이중 해제(double free) 시 문제 되는 이유에 대한 원리는?
