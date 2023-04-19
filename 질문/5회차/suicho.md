@@ -1,17 +1,17 @@
 Pointers and Arrays
-===================
+===
 
 Quick Review of Arrays
------------------------
+---
 
 One-Dimensional Arrays
-----------
+---
 
 Two-Dimensional Arrays
-----
+---
 
 Multidimensional Arrays
-------
+---
 
 Pointer Notation and Arrays
 ---
