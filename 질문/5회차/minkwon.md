@@ -3,15 +3,17 @@
 
 Quick Review of Arrays
 ---
+> One-Dimensional Arrays  
+> Two-Dimensional Arrays  
+> Multidimensional Arrays  
 
-One-Dimensional Arrays
----
+- 1차원, 2차원, 다차원 배열 각각의 선언방법과 메모리에 어떻게 할당되는지 알 수 있음 
 
-Two-Dimensional Arrays
----
+`````
+아래 내용 설명할 수 있는지 확인해 보기!  
+- sizeof연산자를 활용해서 배열의 크기를 구하는 방법은?
+`````
 
-Multidimensional Arrays
----
 
 Pointer Notation and Arrays
 ---
