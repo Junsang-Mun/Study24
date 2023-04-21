@@ -13,16 +13,17 @@
 
 방법1) 포인터 형태 선언  
     
-    <pre>  
-    <code>  
+```
+    // ex)
     char *a = "hello!";  
-    </code>  
-    </pre>  
+``` 
       
 방법2) 배열 형태로 선언 (크기 자동 할당)  
     
-    <pre><code> //ex  
-    char a[] = "hello!"; </code></pre> 
+    ```
+    // ex)   
+    char a[] = "hello!";
+    ```
       
  
 - 두 방법의 공톰점
