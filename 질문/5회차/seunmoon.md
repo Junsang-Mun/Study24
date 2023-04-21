@@ -13,8 +13,12 @@
 
 방법1) 포인터 형태 선언  
     
-    <pre><code> //ex  
-    char *a = "hello!"; </code></pre>  
+    <pre>  
+    <code>  
+    //ex  
+    char *a = "hello!"; ㅠ
+    </code>  
+    </pre>  
       
 방법2) 배열 형태로 선언 (크기 자동 할당)  
     
