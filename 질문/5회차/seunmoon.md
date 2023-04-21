@@ -15,8 +15,7 @@
     
     <pre>  
     <code>  
-    //ex  
-    char *a = "hello!"; ㅠ
+    char *a = "hello!";  
     </code>  
     </pre>  
       
