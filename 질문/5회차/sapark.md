@@ -16,7 +16,7 @@
 ## Using malloc to Create a One-Dimensional Array 86
 --------------------------
 ## Using the realloc Function to Resize an Array 87
-* c99함수를 사용하면 realloc보다 더 나은 해결책이 무엇일까?
+* c99함수를 사용하면 realloc보다 더 나은 해결책이 무엇일까? 
 --------------------------
 ## Passing a One-Dimensional Array 90
 --------------------------
