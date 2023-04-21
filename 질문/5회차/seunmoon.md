@@ -1,4 +1,13 @@
 # CHAPTER 4. 포인터와 배열 (Pointers and Arrays)
+> 모든 self Q, Q에 대한 정답은 접어두도록 하겠다. 질문만 보고 스스로 생각해본 뒤 정답 보기!
+> 
+## 들어가기
+<details>
+<summary>self Q1. 문자 배열과 문자열를 비교하시오.</summary>
+
+ㅁㄴㅇㄹㄴㅁㅇㄹ
+
+</details>
 
 ## 배열 (array)
 
