@@ -101,11 +101,19 @@ int main(void)
 Passing a One-Dimensional Array
 ---
 
+- 1차원 배열을 함수로 넘겨줄 때 배열의 크기도 함께 넘겨주어야 함
+- 크기를 넘겨주지 않으면 배열요소에 접근할 수 없고, 적은 요소를 사용하거나 배열의 범위를 넘어 사용할 위험이 있음 
+
 Using Array Notation
 ---
+- 배열의 크기를 넘겨줄 때 sizeof(arr)로 넘겨주면 안됨 -> sizeof(arr)/sizeof(arr[0])으로 넘겨준다면?? 
 
 Using Pointer Notation
 ---
+- 1차원 배열을 포인터로 넘겨받을 때 대괄호를 사용한 배열 표기법을 사용하면 안 됨 -> 포인터 표기법사용해야 함 
+- 1차원 배열을 대괄호를 사용한 배열 표기법으로 넘겨받을 때 포인터 표기법 사용 가능
+
+> 그 이유에 대해 설명한다면 어떻게 말할 수 있을까? 
 
 Using a One-Dimensional Array of Pointers
 ---
