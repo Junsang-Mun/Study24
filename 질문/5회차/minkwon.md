@@ -33,10 +33,17 @@ Differences Between Arrays and Pointers
 
 Using malloc to Create a One-Dimensional Array
 ---
+- 힙에 메모리를 할당하고 그 주소값을 포인터에 대입하면 이 메모리를 배열로 사용할 수 있음 
 
 Using the realloc Function to Resize an Array
 ---
-
+- <details>
+   <summary>(복습)realloc 함수 원형</summary>
+   <div markdown="1">
+      void* realloc(void* ptr, size_t size);
+   </div>
+   </details>
+   
 Passing a One-Dimensional Array
 ---
 
