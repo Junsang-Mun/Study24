@@ -12,7 +12,7 @@
 ## Pointer Notation and Arrays 83
 --------------------------
 ## Differences Between Arrays and Pointers 85
-이부분이 이번주 스터디 핵심주제같으니 숙지하는 것이 좋을것같다.
+☆ 이부분이 이번주 스터디 핵심주제같으니 숙지하는 것이 좋을것같다.
 --------------------------
 ## Using malloc to Create a One-Dimensional Array 86
 --------------------------
