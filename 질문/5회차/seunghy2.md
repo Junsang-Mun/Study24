@@ -15,6 +15,7 @@
  
  파일1
 
+''''
  #include <stdio.h>
 int main(void) {
 	int arr[5];
@@ -26,9 +27,11 @@ int main(void) {
 		i++;
 	}
 	return (0); }
-		     
+''''
+
 파일2
-		     
+
+''''
 #include <stdio.h>
 int main(void) {
 	int arr[5];
@@ -40,7 +43,8 @@ int main(void) {
 		i++;
 	}
 	return (0); }
-		     
+''''
+
  Using malloc to Create a One-Dimensional Array 86
 -
  Using the realloc Function to Resize an Array 87
