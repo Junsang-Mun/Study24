@@ -55,7 +55,7 @@ Hello World!
 Hello World!
 ````
 
-그렇다면, unsigned long int 의 범위를 벗어난 크기의 구조체를 만든다면?
+그렇다면, unsigned long int 의 범위를 벗어난 크기의 구조체를 만든다면? (진짜로 sizeof() * i 형식으로 되는지, 아니면 sizeof()만큼의 byte를 i번 각각 뛰어넘는지 등...)
 
  Differences Between Arrays and Pointers 85
 -
