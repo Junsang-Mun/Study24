@@ -15,7 +15,8 @@
  혹시 그 외의 다른 문제점이 있을까?
  
  참고 : https://stackoverflow.com/questions/7181504/why-does-iarr-work-as-well-as-arri-in-c-with-larger-data-types 
-  vector가 다루는 자료형이 인덱스로 사용하는 int 자료형 i보다 큰 경우 혹시 자료형의 크기 * i를 하는 과정에서 문제가 생길 수도 있지 않을까해서 테스트 해보았다. ( 물론 자료형의 크기sizeof()가 int형이 아니므로 문제가 되진 않을 것 같다. unsigned long int 라고 함. )
+ 
+ vector가 다루는 자료형이 인덱스로 사용하는 int 자료형 i보다 큰 경우 혹시 자료형의 크기 * i를 하는 과정에서 문제가 생길 수도 있지 않을까해서 테스트 해보았다. ( 물론 자료형의 크기sizeof()가 int형이 아니므로 문제가 되진 않을 것 같다. unsigned long int 라고 함. )
 
 ````
 #include <stdio.h>
