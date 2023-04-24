@@ -56,7 +56,7 @@ Hello World!
 
 그렇다면, unsigned long int 의 범위를 벗어난 크기의 구조체를 만든다면? (진짜로 sizeof() * i 형식으로 되는지, 아니면 sizeof()만큼의 byte를 i번 각각 뛰어넘는지 등...)
 
-쓰고보니 vector[i] 와 i[vector]를 비교하는 것과는 연관이 아예 없다.
+vector[i] 와 i[vector]를 비교하는 것과는 연관이 아예 없다.
 
  Differences Between Arrays and Pointers 85
 -
