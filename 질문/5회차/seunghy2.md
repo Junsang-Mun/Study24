@@ -17,7 +17,8 @@
 
 ````
  #include <stdio.h>
-int main(void) {
+int	main(void)
+{
 	int arr[5];
 	int i = 0;
 
@@ -26,14 +27,16 @@ int main(void) {
 		arr[i] = i;
 		i++;
 	}
-	return (0); }
+	return (0); 
+}
 ````
 
 파일2
 
 ````
 #include <stdio.h>
-int main(void) {
+int	main(void)
+{
 	int arr[5];
 	int i = 0;
 
@@ -42,7 +45,8 @@ int main(void) {
 		*(arr + i) = i;
 		i++;
 	}
-	return (0); }
+	return (0);
+}
 ````
 
  Using malloc to Create a One-Dimensional Array 86
