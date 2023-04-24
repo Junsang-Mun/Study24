@@ -9,9 +9,49 @@
 -
  Pointer Notation and Arrays 83
 -
+ vector[i]와 *(vector + i)가 같다는 것을 아래 Differences Between Arrays and Pointers (85) 파트에 작성한 것처럼 확인하였다.
+ 추가로 i[vector]의 형태 또한 *(vector + i)의 형태로 변한다고 가정했을 때 이 또한 같지 않을 까 확인하였고, 역시 같음을 확인하였다.
+ 그럼에도 책에서 또한 이는 언급되지 않아 있는데, 이는 가시성의 문제이지 않을까 추측했다.
+ 혹시 그 외의 다른 문제점이 있을까?
+ 
+ 참고 : https://stackoverflow.com/questions/7181504/why-does-iarr-work-as-well-as-arri-in-c-with-larger-data-types 
+ 
+ 1) vector가 다루는 자료형이 인덱스로 사용하는 int 자료형 i보다 큰 경우 혹시 자료형의 크기 * i를 하는 과정에서 문제가 생길 수도 있지 않을까해서 테스트 해보았다. ( 물론 자료형의 크기sizeof()가 int형이 아니므로 문제가 되진 않을 것 같다. unsigned long int 라고 함. )
+
+````
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+struct large {
+	char data[2147483648];
+};
+
+int	main(void)
+{
+	int i;
+	struct large *arr;
+	i = 1;
+	arr	= (struct large *)malloc(sizeof(struct large) * 2);
+	if (!arr)
+		return (-1);
+	memset(arr, 0, sizeof(arr[0]));
+	memset(arr, 0, sizeof(arr[1]));
+	printf("%lu\n", sizeof(arr[0]) + sizeof(arr[1]));
+	strcpy(arr[0].data, "You are wrong (kk)");
+	strcpy(arr[1].data, "Hello World!");
+	printf("%s\n%s\n%s\n", arr[i].data, i[arr].data, (*(arr + i)).data);
+
+	free (arr);
+	return (0);
+}
+````
+
+그렇다면, unsigned long int 의 범위를 벗어난 크기의 구조체를 만든다면?
+
  Differences Between Arrays and Pointers 85
 -
- -vector[i]와 *(vector + i)의 머신코드가 다르다고 나와있다. 그런데 이를 확인하기 위해 두 파일을 gcc -S를 통해 어셈블리어로 컴파일링 하고, 이를 diff를 활용하여 비교해보았는데, 어떠한 차이도 발견하지 못 하였다. 혹시 C 표준에 따라 다른 걸까?
+ vector[i]와 *(vector + i)의 머신코드가 다르다고 나와있다. 그런데 이를 확인하기 위해 두 파일을 gcc -S를 통해 어셈블리어로 컴파일링 하고, 이를 diff를 활용하여 비교해보았는데, 어떠한 차이도 발견하지 못 하였다. 혹시 C 표준에 따라 다른 걸까?
  
  파일1
 
