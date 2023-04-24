@@ -197,5 +197,11 @@ a) b) c) d) 또한 마찬가지로 gcc -S 한 어셈블리어 파일을 diff로 
 -
  Jagged Arrays and Pointers 102
 -
+int *arr[5];
+int (*arr)[5];
+둘이 나타내는 자료형이 다른 것은 알겠는데, 
+int (*(arr[]))까지 나오니 어떻게 해석해야 할지 감이 안 잡힌다.
+명확하게 해석하는 방법은 ?
+
  Summary 105
 -
