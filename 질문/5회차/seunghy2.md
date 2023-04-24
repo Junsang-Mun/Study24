@@ -99,6 +99,28 @@ int	main(void)
 }
 ````
 
+i[arr]로 했을 때의 어셈블리어 코드 또한 차이점이 발견되지 않는다.
+
+....
+....
+
+````
+arr[i] = i;
+*(arr + i) = i;
+i[arr] = i;
+````
+위에서는 차이를 보이지 않더니
+
+````
+printf("%d", arr[i]);
+printf("%d", *(arr + i));
+
+printf("%d", i[arr]);
+printf("%d", *(i + arr));
+````
+에서는 두 그룹으로 나뉘게 된다. 위 두개가 같고, 아래 두개가 같은데, 위 아래 그룹은 차이점을 보인다.
+더하는 순서에 따른 차이가 생기는 듯 하다.
+
  Using malloc to Create a One-Dimensional Array 86
 -
  Using the realloc Function to Resize an Array 87
