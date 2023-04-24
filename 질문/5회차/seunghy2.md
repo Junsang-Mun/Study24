@@ -115,6 +115,42 @@ int	main(void)
 -
  Passing a Multidimensional Array 96
 -
+매개변수로 int arr[][5]가 아닌 int *arr일 때의 예시에서, 
+````
+#include <stdio.h>
+
+void d2DArray(int *arr, int rows, int cols)
+{
+	for(int i = 0; i < rows; i++)
+	{
+		for(int j = 0; j < cols; j++)
+			printf("%d", *(arr + (i * cols) + j));
+		printf("\n");
+	}
+}
+
+int main(void)
+{
+	int matrix[2][5] = {
+		{1, 2, 3, 4, 5},
+		{6, 7, 8, 9, 10}
+	};
+	d2DArray(&matrix[0][0], 2, 5);
+}
+````
+
+a) printf("%d", *(arr + (i * cols) + j)); 대신에
+printf("%d", arr[i][j]); 는 잘못되었으며
+printf("%d", (arr + i)[j]); 를 쓰라고 하는데 사실 이 또한 올바른 답이 나오지 않는다.
+arr[i][j]와 같은 논리로 arr은 정수형 포인터 값을 담고 있으므로, arr + i는 sizeof(int) 크기로 작동하기에 옳지 않다.
+
+````
+b) printf("%d", (arr + i * cols)[j]);
+c) printf("%d", (arr + j)[i * cols]);
+````
+
+둘 중 하나로 써야 올바르게 나온다.
+
  Dynamically Allocating a Two-Dimensional Array 99
 -
  Allocating Potentially Noncontiguous Memory 100
