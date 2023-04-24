@@ -47,6 +47,14 @@ int	main(void)
 }
 ````
 
+````
+./a.out
+4294967296
+Hello World!
+Hello World!
+Hello World!
+````
+
 그렇다면, unsigned long int 의 범위를 벗어난 크기의 구조체를 만든다면?
 
  Differences Between Arrays and Pointers 85
