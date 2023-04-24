@@ -161,7 +161,7 @@ c) printf("%d", (arr + j)[i * cols]);
 
 둘 중 하나로 써야 올바르게 나온다.
 
-a) b) c) 또한 마찬가지로 
+a) b) c) 또한 마찬가지로 gcc -S 한 어셈블리어 파일을 diff로 비교해본 결과, a)와 b)는 동일하게 나오고, c)는 차이점을 보였다.
 
  Dynamically Allocating a Two-Dimensional Array 99
 -
