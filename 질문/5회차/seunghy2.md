@@ -115,7 +115,7 @@ int	main(void)
 -
  Passing a Multidimensional Array 96
 -
-매개변수로 int arr[][5]가 아닌 int *arr일 때의 예시에서, 
+
 ````
 #include <stdio.h>
 
@@ -138,6 +138,7 @@ int main(void)
 	d2DArray(&matrix[0][0], 2, 5);
 }
 ````
+매개변수로 int arr[][5]가 아닌 int *arr일 때의 예시에서, 
 
 ````
 a) printf("%d", *(arr + (i * cols) + j)); 
@@ -159,6 +160,8 @@ c) printf("%d", (arr + j)[i * cols]);
 ````
 
 둘 중 하나로 써야 올바르게 나온다.
+
+a) b) c) 또한 마찬가지로 
 
  Dynamically Allocating a Two-Dimensional Array 99
 -
