@@ -120,6 +120,33 @@ Using a One-Dimensional Array of Pointers
 
 Pointers and Multidimensional Arrays
 ---
+> 2차원 배열이 다음과 같이 선언되었다고 했을때, 아래 3가지 표현이 의미하는 바는 무엇일까? 
+
+````  
+int matrix[2][5] = {{1, 2, 3, 4, 5}, {6, 7, 8, 9, 10}}; 
+
+1. matrix + 1  
+2. matrix[0] + 1
+3. *(matrix[0] + 1)
+````
+
+<details>
+ <summary></summary>
+ <div markdown="1">
+ 1. 두 번째 배열(행)의 주솟값을 의미한다. 6으로 시작하는 두번째 배열의 주솟값이다. matrix[1]의 값과 동일하다.  
+ 2. 첫 번째 배열(행)의 두 번째 값의 주솟값을 의미한다.  
+ 3. 첫 번째 배열(행)의 두 번째 값인 2를 의미한다. 
+ </div>
+</details>  
+
+> int (*pmatrix)[5] = matrix는 무엇을 의미할까?  
+
+<details>
+ <summary></summary>
+ <div markdown="1">
+ 2차원 배열인 matrix를 가리키는 포인터 배열을 의미한다. 
+ </div>
+</details>    
 
 Passing a Multidimensional Array
 ---
