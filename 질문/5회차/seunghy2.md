@@ -210,9 +210,9 @@ int (\*(arr[]))
 
 결론
 ````
-int (\*(arr[]))
-int \*(arr[])
-int \*arr[]
+int (*(arr[]))
+int *(arr[])
+int *arr[]
 ````
 셋이 동일하다.
 
