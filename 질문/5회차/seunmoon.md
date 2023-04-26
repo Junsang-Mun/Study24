@@ -64,7 +64,7 @@
     
         - object를 표기할 수 있는 것. (void 타입의 object 제외)  
     
-              ```
+    ```
     // ex)  
     int a = 10;  
     
@@ -73,9 +73,7 @@
     ``` 
       
         - 주로 Lvalue가 식별자(변수, 함수, 클래스 등)를 의미  
-    
         - 모든 Lvalue는 Rvlue이지만, Rvalue는 Lvalue가 아닐 수 있다.  
-    
         - 존재하지 않는 object를 표기하는 p[10]이나 *(p+4) 또한 Lvalue임.  
           이러한 Lvalue를 사용하는 것은 미정의 동작(undefined behavior)임.
     
