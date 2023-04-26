@@ -58,7 +58,7 @@
 
 <details>
 <summary>self Q1. lvalue란 무엇인지 구체적이고 정확하게 설명할 수 있는가? 또한 rvalue와도 비교하여라. </summary>
-* Lvalue와 Rvalue는 소스코드상에서만 볼 수 있는 문법적 요소로, 소스코드가 컴파일 된 후 프로그램이 실행되는 시점에서는 L/Rvalue를 논하는 것은 의미없는 행위임  
+Lvalue와 Rvalue는 소스코드상에서만 볼 수 있는 문법적 요소로, 소스코드가 컴파일 된 후 프로그램이 실행되는 시점에서는 L/Rvalue를 논하는 것은 의미없는 행위임    
     
 1) Lvalue(left value 또는 locator value) : 메모리 위치를 참조하는 식
     
