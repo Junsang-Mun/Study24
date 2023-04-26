@@ -63,14 +63,13 @@ Lvalue와 Rvalue는 소스코드상에서만 볼 수 있는 문법적 요소로,
 1) Lvalue(left value 또는 locator value) : 메모리 위치를 참조하는 식
     
     - object를 표기할 수 있는 것. (void 타입의 object 제외)  
-```
+    ```
     // ex)  
     int a = 10;  
     
     // a라는 것은 10이라는 값이 들어있는 공간인 object를 의미.  
     // 식별자 a라는 것이 10이 들어있는 object를 표기하기 위해 사용된다고 말할 수 있음.
-``` 
-      
+    ``` 
     - 주로 Lvalue가 식별자(변수, 함수, 클래스 등)를 의미  
     - 모든 Lvalue는 Rvlue이지만, Rvalue는 Lvalue가 아닐 수 있다.  
     - 존재하지 않는 object를 표기하는 p[10]이나 *(p+4) 또한 Lvalue임.  
