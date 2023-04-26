@@ -85,13 +85,14 @@ Lvalue와 Rvalue는 소스코드상에서만 볼 수 있는 문법적 요소로,
 
 ## realloc 함수로 배열 크기 조정하기 (Using the realloc Function to Resize an Array)
 <details>
-<summary>self Q1. {NULL과 0}과 {NU과과 '/0'}과 undefined를 비교할 수 있는가?</summary>
+<summary>self Q1. {NULL과 0}과 {NU과과 '/0'}과 undefined를 비교할 수 있는가?</summary>  
+  
 1) NULL과 0
-    * 널 포인터, (void*)0을 가리킴. '값이 없다', '비어있다'를 의미하며 정의되었지만 가리키는 것이 없음.
-    * NULL 매크로는 <stdio.h>, <stdlib.h> 등 여러 헤더파일에서 이미 정의되어 있음.  
+    * 널 포인터, (void*)0을 가리킴. '값이 없다', '비어있다'를 의미하며 정의되었지만 가리키는 것이 없음.  
+    * NULL 매크로는 <stdio.h>, <stdlib.h> 등 여러 헤더파일에서 이미 정의되어 있음.    
     * Null pointer과 정수 0은 완전 같은 것임.  
-      (왜? 두 데이터 타입 모두 4byte로 c언어에서 pointer과 정수는 서로 형 변환이 가능하기 때문)
-    *즉, Null pointer이란? 메모리 주소 0을 가리킨큰 pointer (0번지는 일반적으로 접근 불가 메모리 영역)
+      (왜? 두 데이터 타입 모두 4byte로 c언어에서 pointer과 정수는 서로 형 변환이 가능하기 때문)  
+    *즉, Null pointer이란? 메모리 주소 0을 가리킨큰 pointer (0번지는 일반적으로 접근 불가 메모리 영역)  
     * pointer이 아무 것도 가르키지 않을 때 Null pointer(0x00000000)로 초기화  
   
 2) NUL과 '\0'
@@ -105,7 +106,6 @@ Lvalue와 Rvalue는 소스코드상에서만 볼 수 있는 문법적 요소로,
 
 
 </details>
-<details>
 
 
 ## 1차원 배열 전달하기 (Passing a One-Dimensional Array)
