@@ -77,9 +77,81 @@ int main(void)
         return 0;
 }
 `````
-### String Initialization 110
 
-> Standard String Operations 
+>> String Initialization 110  
+
+  1. char배열로 문자열 초기화
+  `````c
+  char testCharArray1[] = "Awesome day!";
+  /* 배열의 크기를 지정하지 않은 방식. 배열은 널문자를 포함하여 13byte할당되고 "Awesome day!" 문자열 리터럴이 배열에 복사됨 */
+
+  char testCharArray2[13];
+  strcpy(testCharArray2, "Awesome day!");
+  /* 배열 크기를 지정한 방식. 배열 크기를 널문자를 포함하여 문자열 리터럴의 문자개수보다 1개 더 많은 13개로 지정한 후 strcpy함수를 사용해 배열에 복사함 */ 
+  `````
+  **주의!**  
+  **배열명에 문자열 리터럴을 대입할 수 없다. 왜냐하면 배열명은 배열 첫번째 요소의 주솟값으로, 상수이기 때문이다. 상수는 Lvalue가 될 수 없다.** 
+
+ 2. char포인터로 문자열 초기화   
+ `````c
+
+ char* testPointer;  
+ char* testPointer = (char*)malloc(strlen("Awesome day!")+1);
+ strcpy(testPointer, "Awesome day!"); 
+ /*문자열 리터럴 문자개수에 널문자를 더한 만큼 동적할당한후 해당 공간에 strcpy함수로 문자열을 복사함*/ 
+ `````
+ **주의!**  
+ **동적할당 시 문자길이를 결정할 때 반드시 널문자를 함께 고려해야 한다**  
+ **문자열 리터럴의 문자 개수 셀 때 sizeof연산자 사용하면 안되고 strlen함수 사용해야 한다. 왜냐하면 sizeof연산자는 문자열의 길이를 반환하는 것이 아니라 배열이나 포인터의 크기를 반환하기 때문이다**  
+
+ `````c
+
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+
+        printf("sizeof of \"Awesome day!\": %ld\n", sizeof("Awesome day!")); //null문자 포함하여 결괏값 13
+        printf("strlen of \"Awesome day!\": %ld\n", strlen("Awesome day!")); //null문자 포함하지 않아서 결괏값 12
+
+        return 0;
+}
+
+`````
+
+*애초에 동적할당할 때 널문자를 위한 1을 더하지 않고 sizeof연산자만 사용하면 되지 않나??* 
+`````c
+int main(void)
+{
+        char* testPointer = (char*)malloc(sizeof("Awesome day!"));
+        strcpy(testPointer, "Awesome day!");
+
+        printf("%s\n", testPointer);
+
+        free(testPointer);
+
+        return 0;
+}
+/* 위 코드도 컴파일 오류없이 잘 실행됨 */
+`````
+
+개인적 의견으로는 문자열길이만큼 동적할당 해야하는 것이므로 목적에 맞게 strlen함수를 사용하고 널문자를 위한 1을 연산하는 것이 보다 더 정확한 코드 구현일 거라 생각한다.  
+
+**문자**리터럴을 포인터로 초기화 할 때 주의해야 한다.  
+````c
+        char* thisIsPlus = '+';
+        printf("%c\n", *thisIsPlus); // 컴파일 오류. warning: initialization of ‘char *’ from ‘int’ makes pointer from integer without a cast 
+
+        char* thisIsString = "string";
+        printf("%c\n", *thisIsString); // 결괏값 s 
+````  
+
+첫 번째 코드에서 컴파일 오류가 나는 이유는 **문자**리터럴은 주솟값이 아니라 **int형**이기 때문이다.   
+
+3. 표준입출력을 통한 문자열 초기화 
+
+scanf함수를 사용하여 사용자로부터 입력을 받아 문자열을 초기화 할 수도 있으나 입력받은 문자를 저장할 공간이 할당되지 않은 상태에서 입력을 받게되므로 잠재적인 오류가 발생할 가능성이 있다.  
 
 ### Comparing Strings 115
 ### Copying Strings 116
