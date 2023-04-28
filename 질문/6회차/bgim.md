@@ -11,14 +11,14 @@
  - 문자열은 일반적으로 배열 또는 힙에 할당된 메모리에 저장됨
  - 모든 문자의 배열이 문자열인 것은 아니다. 문자 배열에는 NUL이 포함되지 않을 수 있다
  - NULL과 NUL이 다르다는 사실을 기억하자. NULL은 특별한 포인터로 사용되며, 일반적으로 ((void*)0)으로 정의한다. NUL은 문자이며, '\0'으로 정의한다. 이들 둘은 서로 바뀌어 사용되어서는 안 된다.
- - <span style = 'color:red'>Q. C 언어에서 문자 상수는 아래 예제와 같이 정수(int) 타입이라고 한다. 이런 변칙 현상은 언어 설계에 의도적으로 반영되었다고 하는데, 왜지? 어차피 1바이트만으로 ascii 표현 가능한 것이 아니었던가?</span>
+ - <span style = "background-color:yellow">Q. C 언어에서 문자 상수는 아래 예제와 같이 정수(int) 타입이라고 한다. 이런 변칙 현상은 언어 설계에 의도적으로 반영되었다고 하는데, 왜지? 어차피 1바이트만으로 ascii 표현 가능한 것이 아니었던가?</span>
   ```c
   printf("%d\n", sizeof(char));   // 1 byte
   printf("%d\n", sizeof('a'));	  // 4 bytes
   ```
-  - <span style = 'color:green'>※참고 : C++ 에서는 문자 리터럴이 char와 동일하게 1바이트임)</span>
-  - <span style = 'color:green'>※ literal 이란? "소스코드에 쓴 그대로의 값"</span>
-  - <span style = 'color:red'>Q. 패킹과 다중바이트란?</span>
+  - <span style = "color:green">※참고 : C++ 에서는 문자 리터럴이 char와 동일하게 1바이트임)</span>
+  - <span style = "color:green">※ literal 이란? "소스코드에 쓴 그대로의 값"</span>
+  - <span style = "background-color:yellow">Q. 패킹과 다중바이트란?</span>
  
  ### 문자열 선언
  - 방법 세 가지 : 리터럴로, 문자의 배열로, 문자에 대한 포인터로
@@ -30,7 +30,7 @@
  *tabHeader = 'L';
  printf("%s\n", tabHeader); // "Lound" 출력
  ```
- - <span style = 'color:red'>Q. 나는 왜 예제처럼 'L'로 바꾸고 출력 안 되지?</span>
+ - <span style = "background-color:yellow">Q. 나는 왜 예제처럼 'L'로 바꾸고 출력 안 되지?</span>
  ### 문자열 초기화
  #### char 배열 초기화하기
  ```c
@@ -69,12 +69,12 @@
  ```
  - 책의 '그림 5-5 선언 방식에 따른 (메모리 영역의)문자열 위치'를 한 번 머리에 넣어두자.
 
- #### <span style = 'color:green'>※※ 마크업, 마크다운이란?</span>
- - <span style = 'color:green'>마크다운을 이 문서를 작성하면서 처음으로 찾아보게 되었는데 문득 궁금했다.</span>
+ #### <span style = "color:green">※※ 마크업, 마크다운이란?</span>
+ - <span style = "color:green">마크다운을 이 문서를 작성하면서 처음으로 찾아보게 되었는데 문득 궁금했다.</span>
  > “마크업 언어(Markup Language)는 문서가 화면에 표시되는 형식을 나타내거나 데이터의 논리적인 구조를 명시하기 위한 규칙들을 정의한 언어의 일종이다. 데이터를 기술한 언어라는 점에서 프로그래밍 언어와는 차이가 있다.”
- - <span style = 'color:green'>그러면 Markdown은 무엇일까?</span>
+ - <span style = "color:green">그러면 Markdown은 무엇일까?</span>
  > 마크다운은 마크업 언어가 태그(<div> </div>과 같은 구조)로 이루어져 사용하기 힘들어서 만들어진 마크업의 파생형이다. 읽기도 쓰기도 쉬운 문서 양식을 지향하기 때문에, 복잡한 태그 구조가 사라지고 간단한 텍스트들과 몇 가지 문법만 알면 작성할 수 있게 했다.
- - <span style = 'color:green'>지금 작성되고 있는 확장자명 .md 뜻이 markdown 이였구나!</span>
+ - <span style = "color:green">지금 작성되고 있는 확장자명 .md 뜻이 markdown 이였구나!</span>
 
 ## 표준 문자열 연산
  #### 문자열 비교하기
