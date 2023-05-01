@@ -289,11 +289,37 @@ enough memory” follows the first literal, the second literal is overwritten. (
 결론적으로 중요한 것은 strcat함수 사용으로 다른 메모리 공간을 침범하지 않아야 한다는 것이다.   
 strcat함수를 통해 붙여진 문자열의 길이에 널문자를 더한 만큼의 공간을 확보한 후 해당 공간에 문자열을 채워 넣는 것이 안전하다.
 
-> Passing Strings 
-### Passing a Simple String 121
-### Passing a Pointer to a Constant char 123
-### Passing a String to Be Initialized 123
-### Passing Arguments to an Application 125
+> ## Passing Strings  
+
+>> Passing a Simple String 121  
+
+포인터를 사용하는 방법  
+배열을 사용하는 방법 
+
+>> Passing a Pointer to a Constant char 123  
+
+문자열의 포인터를 상수 char로 전달하는 것은 유용하고 일반적이다.  
+ 왜냐하면 const를 붙임으로써 함수에서 원래의 문자열을 변경할 수 없기 때문이다. 
+
+*원래 값을 변경하지 못하도록 하는 것은 왜 유용할까?* 
+
+>> Passing a String to Be Initialized 123  
+
+초기화 되지 않은 문자 배열을 함수의 매개변수로 넘긴 후 해당 함수에서 초기화 하는 방법에 대해 설명한다. 
+
+매개변수로 비어있는 버퍼를 넘길것인지,   
+아니면 버퍼의 공간을 호출 된 함수내에서 동적할당할 것인지 결정해야 한다. 
+
+버퍼가 전달 될 때 버퍼의 주소와 크기가 전달되어야 한다.  
+호출 함수는 해당 버퍼 공간을 해제해야 한다.  
+호출을 받은 함수는 보통 이 버퍼의 포인터를 반환한다.  
+
+snprintf   
+
+>> Passing Arguments to an Application 125
+
+argc argv
+
 
 > Returning Strings
 ### Returning the Address of a Literal 126
