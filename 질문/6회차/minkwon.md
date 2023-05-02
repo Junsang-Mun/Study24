@@ -321,8 +321,149 @@ snprintf
 argc argv
 
 
-> Returning Strings
-### Returning the Address of a Literal 126
-### Returning the Address of Dynamically Allocated Memory 128
+> ## Returning Strings 
 
-> Function Pointers and Strings 130
+문자열 반환  
+동적 할당된 메모리 주소 반환  
+지역 문자열 변수 반환  
+
+>> Returning the Address of a Literal 126  
+
+문자열 리터럴 자체를 반환할 수도 있고, 문자열 리터럴을 포인터에 대입한 후 포인터를 반환할 수도 있다.  
+
+다양한 목적으로 사용되는 정적 문자열에 대한 포인터를 반환하는 것은 문제가 될 수도 있다. 왜냐하면 같은 공간을 공유하기 때문에 해당 공간이 함수를 통해 여러 번 호출 될 경우 첫 번째 호출된 값은 다음에 호출 된 값에 의해 덮어 씌여질 수도 있기 때문이다.
+
+*해당 섹션은 이해가 잘 되지 않는다. 내가 이해하고 있는 게 맞는지 확인이 필요하다.*
+
+>> Returning the Address of Dynamically Allocated Memory 128 
+
+함수 내에서 문자를 담기 위한 공간을 동적으로 할당한 후 문자를 채워 넣고 이를 반환하는 방법도 있다.  
+
+이럴 경우 해당 함수를 호출한 곳, 즉 함수의 반환값을 받은 곳에서 동적으로 할당된 공간을 해제하는 것을 잊어서는 안 된다. 
+
+>> Returning the address of a local string 129  
+
+로컬 문자열의 주솟값을 반환하는 것은 피해야 한다. 왜냐하면 다른 지역 변수가 선언되어 다른 스택 프레임이 생기면 해당 공간을 덮어 쓰기 때문에 로컬 문자열이 있던 메모리 공간이 손상될 수 있기 때문이다. 
+
+*해당 섹션은 이해가 잘 되지 않는다. 내가 이해하고 있는 게 맞는지 확인이 필요하다.*
+
+> ## Function Pointers and Strings 130  
+
+````c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+// #include <ctype.h> -> tolower함수를 사용하려면 ctype.h헤더파일을 인클루드 해야 함 
+
+typedef int (fptrOperation)(const char*, const char*);
+int compare(const char* s1, const char* s2);
+char chngtolower(char isLower);
+char* stringToLower(const char* string);
+int compareIgnoreCase(const char* s1, const char* s2);
+void sort(char* arr[], int size, fptrOperation operation);
+void displayNames(char* names[], int size);
+
+int main(void)
+{
+        char* names[] = {"Bob", "Ted", "Carol", "Alice", "alice"};
+        sort(names, 5, compareIgnoreCase);
+        //sort(names, 5, compare);
+        displayNames(names, 5);
+
+        return 0;
+}
+
+int compare(const char* s1, const char* s2)
+{
+        return strcmp(s1, s2);
+}
+
+int compareIgnoreCase(const char* s1, const char* s2)
+{
+        char* t1 = stringToLower(s1);
+        char* t2 = stringToLower(s2);
+        int result = strcmp(t1, t2);
+        free(t1);
+        free(t2);
+        return result;
+}
+
+char chngtolower(char isLower)
+{
+        if (isLower >= 'A' && isLower <= 'Z')
+        {
+                isLower += 32;
+        }
+        return isLower;
+}
+
+char* stringToLower(const char* string)
+{
+        char* tmp = (char*)malloc(strlen(string) + 1);
+        char* start = tmp;
+        while (*string != '\0')
+        {
+                *tmp++ = chngtolower(*string++);
+        }
+        *tmp = 0;
+        return start;
+}
+
+void sort(char* arr[], int size, fptrOperation operation)
+{
+        int swap = 1;
+        while (swap)
+        {
+                swap = 0;
+                for (int i = 0; i < size - 1; i++)
+                {
+                        if (operation(arr[i], arr[i+1]) > 0)
+                        {
+                                swap = 1;
+                                char *tmp = arr[i];
+                                arr[i] = arr[i+1];
+                                arr[i+1] = tmp;
+                        }
+                }
+        }
+}
+
+void displayNames(char* names[], int size)
+{
+        for (int i = 0; i < size; i++)
+        {
+                printf("%s    ", names[i]);
+        }
+        printf("\n");
+}
+````
+
+strcmp 라이브러리 함수를 통해 비교 함수를 구현하여 주어진 문자열을 알파벳 순서대로 구현해보는 코드이다. 
+
+정렬을 위해 sort함수를 구현하였는데, 버블 정렬 알고리즘이 사용되었고, 함수 포인터를 받아 문자열을 비교한다. 함수 포인터로 비교하기 때문에 매개변수로 어떤 함수를 받는지에 따라 결괏값이 달라진다.   
+
+단순히 아스키코드 값으로 문자를 비교한 compare함수를 매개변수로 받으면 결괏값은 "alice"가 가장 뒤에 나오게 된다. 왜냐하면 "alice"의 소문자 'a'는 아스키 코드 상에서 대문자보다 뒤에 나와 코드포인트가 더 크기 때문이다. (A=65, a=97)   
+
+compareIgnoreCase는 소문자를 포함하여 사전(dictionary) 순서대로 문자열을 정렬하기 위한 함수이다. 이를 위해 stringToLower함수를 사용하여 매개변수로 받은 문자열을 모두 소문자로 바꾼 후에 문자를 비교하여 그 결괏값을 반환하였다. 
+
+**책에 있는 tolower함수는 c라이브러리에 있는 함수이다. 이를 사용하기 위해서는 ctype.h헤더파일을 인클루드 해야 한다. 만약 소문자를 대문자로 바꾸고 싶다면 toupper함수를 사용하면 된다.**  
+
+그러나 라이브러리 함수를 사용하지 않고 chngtolower로 tolower함수를 직접 구현해 보았다. chngtolower함수에서 매개변수로 const를 사용하지 않은 이유는 매개변수로 받은 문자가 대문자일 경우 소문자로 값을 바꿔주어야 하기 때문이다. 만약 const를 사용하게 되면 읽기 전용 메모리에 저장된 상수값을 바꾸려고 시도했기 때문에 컴파일 오류가 나타난다.   
+
+main함수에서 sort함수의 매개변수로 compare함수를 넘겨주면 아래와 같은 결괏값이 나온다.  
+
+````c
+sort(names, 5, compare);
+
+Alice    Bob    Carol    Ted    alice
+````  
+
+그러나 sort함수의 매개변수로 compareIgnoreCase함수를 넘겨주면 아래와 같은 결괏값이 나온다. 
+
+````c
+sort(names, 5, compareIgnoreCase);
+
+Alice    alice    Bob    Carol    Ted
+````
+
+함수 포인터를 사용함으로써 정렬의 기능을 보다 더 유연하게 구현할 수 있는 것이다. 
