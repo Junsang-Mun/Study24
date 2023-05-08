@@ -1,0 +1,11 @@
+# Chapter6 Pointers and Structures
+
+## introduce
+## How Memory Is Allocated for a Structure 
+## Structure Deallocaion Issues 
+## Avoiding malloc/free Overhead
+## Using Pointers to Support Data Structures 
+### Single-Linked List 
+### Using Pointers to Support a Queue 
+### Using Pointers to Support a Stack 
+### Using Pointers to Support a Tree 
