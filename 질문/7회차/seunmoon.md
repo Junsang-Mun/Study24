@@ -122,7 +122,20 @@
            : 쓰레기(garbage) 값으로 채워짐 (즉, 자동으로 초기화되지 않음)  
   
     
-      
+- 주의할 점
+    - ///code/// 구조체에 대한 포인터를 사용한 경우, 아래 코드처럼 포인터에 할당된 메모리를 해제하는 것 잊지 말기
+        ```c  
+        void processPerson(){  
+            Person *ptrPerson;  
+            ptkrPerson = (Person*)malloc(siezof(Person));  
+            initializePerson(ptrPerson, "Peter", "Underwood", "Manager", 36);  
+                ...  
+            deallocatePerson(ptrPerson);  
+            free(ptrPerson);  
+        }  
+        ```  
+          
+            
 ## malloc/free 오버헤드 피하기 (Avoiding malloc/free Overhead) 
 
 ## 포인터와 데이터 구조 ( Using Pointers to Support Data Structures)  
