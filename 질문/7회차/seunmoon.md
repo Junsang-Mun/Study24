@@ -271,7 +271,76 @@
   
   
 - 연결 리스트(Linked list) - 단일 연결 리스트(Single-Linked List)  
-
+    - 정의 : 서로 연결된(interconnected) 다수의 노드(node)로 구성된 데이터 구조
+    - 구조 : head node - n개의 node - tail node
+    - 노드 연결하는 방법 : 노드를 연결하는 링크는 포인터를 이용해 구현
+    - 특징 : 각 노드는 필요한 만큼 동적 할당 가능
+    - 장점 : 배열보다 유연성 (노드 추가&삭제 및 순서바꿈이 훨씬 간편)
+    - 이외 종류 : 단일 연결 리스트 외에도, 이중 연결 리스트(doubly linked list), 환형(순환) 연결 리스트 (circular linked list)가 있음  
+    - ///code/// Node 구조체  
+      
+      ```c
+      typedef struct _node {
+          void *dat;
+          struct _node *next;
+      } Node;
+     
+      typedef struct _linkedList {
+          Node *head;
+          Node *tail;
+          Node *current;
+      } LinkedList;
+      ```  
+      
+    - 연결 리스트의 기능을 지원할 수 있는 대표적 함수들  
+      
+        - ///code/// 초기화 함수  
+            
+            ```c
+            void initializeList(LinkedList *List) {
+                list->head = NULL;
+                list->tail = NULL;
+                list->current = NULL;
+            }
+            ```
+            
+        - ///code/// head 노드에 데이터를 추가하는 함수  
+                    
+            ```c
+            void addHead(LinkedList *list, void* data) {
+                Node *node = (Node *)malloc(sizeof(Node));
+                node->data = data;
+                if (list->head == NULL) {
+                    list->tail = node;
+                    node->next = NULL;
+                }
+                else {
+                    node->next = list->head;
+                }
+                list->head = node;
+            }
+            ```
+            
+        - ///code/// tail 노드에 데이터를 추가하는 함수  
+                    
+            ```c
+            void addTail(LinkedList *list, void* data) {
+                Node *node = (Node *)malloc(sizeof(Node));
+                node->data = data;
+                node->next = NULL;
+                if (list->head == NULL) {
+                    list->head = node;
+                }
+                else {
+                    node->tail->next = node;
+                }
+                list->head = node;
+            }
+            ```
+            
+        - ///code/// head 노드를 삭제하는 함수
+        - ///code/// 특정 데이터가 저장된 노드에 대한 포인터를 반환하는 함수  
+        - ///code/// 연결 리스트를 출력하는 함수  
 - 큐(Queue) - 단순 선입선출 큐(simple first-in first-out queue)  
  
 - 스택(stack) - 단순 스택
