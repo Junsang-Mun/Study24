@@ -232,12 +232,13 @@
         
 ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――  
 ## 포인터와 데이터 구조 ( Using Pointers to Support Data Structures)  
+이 장에서는 네 개의 데이터 구조만 다뤄보도록 하겠다.
 
-- 단일 연결 리스트 (Single-Linked List)  
+- 연결 리스트(Linked list) - 단일 연결 리스트(Single-Linked List)  
 
-- 포인터와 큐 (Using Pointers to Support a Queue)  
+- 큐(Queue) - 단순 선입선출 큐(simple first-in first-out queue)  
  
-- 포인터와 스택 (Using Pointers to Support a Stack)  
+- 스택(stack) - 단순 스택
  
-- 포인터와 트리 (Using Pointers to Support a Tree)  
+- 트리(tree) - 이진 트리(binary tree)  
  
