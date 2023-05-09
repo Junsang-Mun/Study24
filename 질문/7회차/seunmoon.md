@@ -231,9 +231,43 @@
         
         
 ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――  
-## 포인터와 데이터 구조 ( Using Pointers to Support Data Structures)  
-이 장에서는 네 개의 데이터 구조만 다뤄보도록 하겠다.
+## 포인터와 데이터 구조 ( Using Pointers to Support Data Structures)   
+> 이 장에서는 네 개의 데이터 구조만 다뤄보도록 하겠다.  
+> 각 데이터 구조를 설명할 때, 함수 포인터가 일반적인 데이터 구조를 다룰 때 얼마나 유용한지도 함께 알아볼 것이다.  
+> ///code/// 각 데이터 구조를 설명하기 위해 사용될 구조체 및 함수들
+>> 구조체 employee  
 
+    ```c
+    typedef struct _emplytee {
+        char name[32]; // name 필드에는 단순 배열 사용 (char *가 더 유연한 데이터 타입이긴 하나, 예제를 단순하게 하기 위해)
+        unsinged char age;
+    } Employee;
+    ```  
+    
+>> 두 employee를 비교하는 함수 compareEmployee (strcmp 함수 본뜸) 
+
+    ```c
+    int compareEmplyee(Emplyee *e1, Employee *e2) {
+        return strcmp(e1->name, e2_->name);
+    }
+    ```  
+    
+>> employee의 내용을 출력해주는 함수 displayEmployee  
+
+    ```c
+    void displayEmplyee(Emplyee* employee) {
+        printf("%s"\t%d\n)", employee->name, employee->age);
+    }
+    ```  
+    
+>> 함수 포인터 DISPLAY : void* 형의 매개 변수를 입력받고, 아무 값도 반환하지 않는(void) 함수를 지칭  
+    (이 함수의 목적 : 데이터 출력)  
+    
+>> 함수 포인터 COMPARE : 두 개의 포인터에 의해 참조되는 데이터를 비교하는 함수를 지칭  
+   (데이터 비교해 -1, 0, 1 중 하나 반환)  
+  
+  
+  
 - 연결 리스트(Linked list) - 단일 연결 리스트(Single-Linked List)  
 
 - 큐(Queue) - 단순 선입선출 큐(simple first-in first-out queue)  
