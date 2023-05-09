@@ -71,7 +71,7 @@
           (ex_ short 타입의 필드의 경우 2byte의 패딩 추가되어 나머지 필드와 같은 양의 메모리가 할당 됨))  
   
   
-  
+―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
 ## 구조체 할당 해제 이슈 (Structure Deallocation Issues)  
   
 - 구조체에 메모리가 할당될 때/구조체가 삭제될 때 런타임 시스템(runtime system)의 작동    
@@ -135,9 +135,84 @@
         }  
         ```  
           
+―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――  
+## malloc/free 오버헤드 피하기 (Avoiding malloc/free Overhead)  
+  
+    
+- 오버 헤드(Overhead)이란?  
+    - 프로그램의 실행흐름에서 나타나는 현상 중 하나  
+    - ex) 프로그램의 실행 흐름 도중에 동떨어진 위치의 코드를 실행시켜야 할 때,  
+      추가적으로 시간, 메모리, 자원이 사용됨  
+    - 이러한 현상은 프로그래밍 시 외부 함수를 사용할 때 특히 나타남  
+    - 매크로 함수, 인라인 함수 등을 사용하여 최적화 시키곤 함  
+  
+  
+- 객체 풀(Object Pool)이란?  
+    - 목적 :  객체를 매번 할당&해제하지 않고 고정 크기 풀에 들어있는 객체를 재사용함  
+      -> 메모리 사용 성능 개선(메모리나 다른 자원 할당을 신경쓰지 않고 마음껏 객체를 생성 및 삭제 가능)
+    - 객체  풀에 들어가는 객체는 자신이 '사용 중'인지 여부를 알 수 있는 방법을 제공해야함  
+      (사용 중이 아니라면 객체 풀에 다시 집어 넣어야 하기 때문)  
+    - 해당 풀에 객체를 미리 '사용 안함' 상태로 선언해놓고 필요할 때 객체 풀에 새로운 객체를 달라고 요구  
+      -> 풀에서 객체를 선택하여 '사용 중'상태로 바꾼 뒤 객체를 반환해 줌  
+  
+    
+- 객체 풀을 사용하여 오버 헤드 회피하는 방법  
+    step 1) ///code/// 위의 예시 코드에서 계속 사용되었던 person 객체를 담을 리스트 만들고 초기화  
+            (초기화해주는 역할의 함수인 initializeList를 통해 배열의 각 요소에 NULL을 할당)    
             
-## malloc/free 오버헤드 피하기 (Avoiding malloc/free Overhead) 
+            ```c  
+            #define LIST_SIZE 10  
+            Person *list[LIST_SIZE];  
+            
+            void initializeList() {  
+                for (int i = 0; i < LIST_SIZE; i++)  
+                    list[i] = NULL;  
+            }  
+            ```
+              
+    step 2) 이제, person의 개체를 추가하거나 가져올 때 두 개의 함수(getPerson, returnPerson)이 사용 됨  
+        - ///code/// getPerson 함수
+            - list에서 person 객체의 개체가 사용 가능한 경우 개체를 가져오는 함수.  
+            - 배열의 요소가 NULL인지 검사 -> 처음으로 NULL이 아닌 요소 반환 & 해당 위치의 값에 NULL 할당.  
+            - 만약 사용 가능한 개체가 없다면 -> 새로운 Person 객체 생성 후 반환  
+            
+           
+            ```c
+            Person *getPerson() {
+                for (int i = 0; i < LIST_SIZE; i++) {
+                    if (list[i] != NULL) {
+                        Person *ptr = list[i];
+                        list[i] = NULL;
+                        return ptr;
+                    }
+                }
+                Person *person = (Person*)malloc(sizeof(Person));
+                return person;
+            }
+            ```  
+            
+        - ///code/// returnPerson 함수
+            - list에 person 개체를 반환하거나 해제하는 함수.  
+            - 배열의 요소가 NULL인지 검사 -> NULL일 경우 반환된 person 인스턴스를 그 위치에 할당 & 포인터 반환.  
+            - 만약 list가 가득 차있다면 -> person 안의 포인터를 deallocatePerson 함수를 이용하여 해제 후 NULL 반환  
+            
+            ```c  
+            Person *returnPerson(Person *person) {  
+                for (int i = 0; i < LIST_SIZE; i++) {  
+                    if (list[i] == NULL) {  
+                        Person *ptr = list[i];  
+                        list[i] = person;  
+                        return person;  
+                    }  
+                }  
+                deallocatePerson(person);  
+                free(person);  
+                return NULL;  
+            }  
+            ```    
+              
 
+―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――  
 ## 포인터와 데이터 구조 ( Using Pointers to Support Data Structures)  
 
 - 단일 연결 리스트 (Single-Linked List)  
