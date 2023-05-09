@@ -17,9 +17,30 @@
 ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――  
 ## 소개 (Introduction)
 - 구조체 선언 방법
-    - strcut 키워드 이용
-    - typedef 키워드 이용
-    - 
+    - strcut 키워드 이용  
+        ```c
+        struct _person{  
+            char *firstName;  
+            char *lastName;  
+            char *title;  
+            unsinged int age;  
+        }  
+        ```
+    - typedef 키워드 이용  
+        ```c
+        typedef struct _person{  
+            char *firstName;  
+            char *lastName;  
+            char *title;  
+            unsinged int age;  
+        } Person;  
+        
+        /* person의 인스턴스 선언 방법  
+        1) Person person; ---> 단순 구조체 선언, '.(dot)' 기호를 사용하여 필드에 접근  
+        2) Person *person; ---> 구조체에 대한 포인터 이용, '->(points-to)' 연산자를 사용하여 필드로 접근  
+            (이 경우에 '.'을 사용하려면 (*person).firstName 이런 식으로 역참조 사용해야 함)  
+        ```
+- 구조체에 메모리가 할당되는 방법
 
 ## 구조체 할당 해제 이슈 (Structure Deallocation Issues)
 
