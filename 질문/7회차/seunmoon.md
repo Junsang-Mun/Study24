@@ -157,8 +157,8 @@
   
     
 - 객체 풀을 사용하여 오버 헤드 회피하는 방법  
-    step 1) ///code/// 위의 예시 코드에서 계속 사용되었던 person 객체를 담을 리스트 만들고 초기화  
-            (초기화해주는 역할의 함수인 initializeList를 통해 배열의 각 요소에 NULL을 할당)    
+    - step 1) ///code/// 위의 예시 코드에서 계속 사용되었던 person 객체를 담을 리스트 만들고 초기화  
+    　　　　(초기화해주는 역할의 함수인 initializeList를 통해 배열의 각 요소에 NULL을 할당)    
             
             ```c  
             #define LIST_SIZE 10  
@@ -170,48 +170,66 @@
             }  
             ```
               
-    step 2) 이제, person의 개체를 추가하거나 가져올 때 두 개의 함수(getPerson, returnPerson)이 사용 됨  
+    - step 2) 이제, person의 개체를 추가하거나 가져올 때 두 개의 함수(getPerson, returnPerson)이 사용 됨  
         - ///code/// getPerson 함수
-            - list에서 person 객체의 개체가 사용 가능한 경우 개체를 가져오는 함수.  
-            - 배열의 요소가 NULL인지 검사 -> 처음으로 NULL이 아닌 요소 반환 & 해당 위치의 값에 NULL 할당.  
-            - 만약 사용 가능한 개체가 없다면 -> 새로운 Person 객체 생성 후 반환  
-            
+            : list에서 person 객체의 개체가 사용 가능한 경우 개체를 가져오는 함수.  
+            : 배열의 요소가 NULL인지 검사 -> 처음으로 NULL이 아닌 요소 반환 & 해당 위치의 값에 NULL 할당.  
+            : 만약 사용 가능한 개체가 없다면 -> 새로운 Person 객체 생성 후 반환  
            
-            ```c
-            Person *getPerson() {
-                for (int i = 0; i < LIST_SIZE; i++) {
-                    if (list[i] != NULL) {
-                        Person *ptr = list[i];
-                        list[i] = NULL;
-                        return ptr;
+                ```c
+                Person *getPerson() {
+                    for (int i = 0; i < LIST_SIZE; i++) {
+                        if (list[i] != NULL) {
+                            Person *ptr = list[i];
+                            list[i] = NULL;
+                            return ptr;
+                        }
                     }
+                    Person *person = (Person*)malloc(sizeof(Person));
+                    return person;
                 }
-                Person *person = (Person*)malloc(sizeof(Person));
-                return person;
-            }
-            ```  
+                ```  
             
         - ///code/// returnPerson 함수
-            - list에 person 개체를 반환하거나 해제하는 함수.  
-            - 배열의 요소가 NULL인지 검사 -> NULL일 경우 반환된 person 인스턴스를 그 위치에 할당 & 포인터 반환.  
-            - 만약 list가 가득 차있다면 -> person 안의 포인터를 deallocatePerson 함수를 이용하여 해제 후 NULL 반환  
+            : list에 person 개체를 반환하거나 해제하는 함수.  
+            : 배열의 요소가 NULL인지 검사 -> NULL일 경우 반환된 person 인스턴스를 그 위치에 할당 & 포인터 반환.  
+            : 만약 list가 가득 차있다면 -> person 안의 포인터를 deallocatePerson 함수를 이용하여 해제 후 NULL 반환  
             
-            ```c  
-            Person *returnPerson(Person *person) {  
-                for (int i = 0; i < LIST_SIZE; i++) {  
-                    if (list[i] == NULL) {  
-                        Person *ptr = list[i];  
-                        list[i] = person;  
-                        return person;  
+                ```c  
+                Person *returnPerson(Person *person) {  
+                    for (int i = 0; i < LIST_SIZE; i++) {  
+                        if (list[i] == NULL) {  
+                            Person *ptr = list[i];  
+                            list[i] = person;  
+                            return person;  
+                        }  
                     }  
+                    deallocatePerson(person);  
+                    free(person);  
+                    return NULL;  
                 }  
-                deallocatePerson(person);  
-                free(person);  
-                return NULL;  
-            }  
-            ```    
+                ```   
+                
+                
+    - ///code/// 위 step(과정) 총 정리 및 요약
+        ```c
+        initializeList();
+        Person *ptrPerson;
+        
+        ptrPerson = getPerson();
+        linitializePerson(ptrPerson, "Ralph", "Fisgerald", "Mr", 35);
+        displayPerson(*ptrPerson);
+        returnPerson(ptrPerson);
+        ```  
               
 
+    - 위 방법의 한 가지 문제점 : 리스트 크기  
+        - 리스트가 너무 작을 경우 : 동적잉ㄴ 할당 및 해제가 더욱 자주 발생  
+        - 리스트가 너무 클 경우 : 너무 많은 메모리가 선점되어 다른 애플리케이션의 실행에 영향을 줌  
+        - 따라서, 좀 더 정교한 메모리 관리 기법을 이용해 리스트의 크기 조절 가능  
+        
+        
+        
 ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――  
 ## 포인터와 데이터 구조 ( Using Pointers to Support Data Structures)  
 
