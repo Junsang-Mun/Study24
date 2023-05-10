@@ -408,4 +408,54 @@
       ```
  
 - 트리(tree) - 이진 트리(binary tree)  
+    - 정의 : 구성 요소 간의 관계를 나무 형태로 표현한 것으로,  그 관계를 본 떠 명명된 매우 유용한 데이터 구조
+    - 구조 : 부모 노드에 자식 노드가 붙음. 루트 노드가 데이터 구조의 시작 요소가 됨 
+    - 특징
+        - 트리는자식 노드를 제한 없이 가질 수 있으나 0 ~ 2개의 자식 노드(left, right)를 가지는 이진 트리가 더 많이 사용 됨 
+        - 자식 노드를 갖지 않는 노드 : 잎(leaf) 노드 또는 말단 노드라고 부름
+        - 일반적인 정렬 방법으로는, (왼쪽 자식 노드의 값) < (부모 노드의 값) < (오른쪽 노드의 값) ---> 이 것을 이진 검색 트리라고 부름
+    - ///code/// 트리 노드의 기본 구조와 관련 함수 알아보기
+    
+      ```c
+      // 트리 노드를 나타내는 구조체
+      typedef struct _tree {
+          void *data;
+          struct _tree *left;
+          struct _tree *right;
+      } TreeNode;
+      
+      // 초기화 동작에 대한 함수
+      void initializeStack(Stkack *stack) {
+         initializeList(stack);
+      }
+      
+      // push 동작에 대한 함수
+        void push(Stack *stack, void *data) {
+            addHead(stack, data);
+      }
+      
+      // pop 동작에 대한 함수 (빈(empty)/요소 하나/요소 한 개 이상인 경우 나눠서 생각해야 함!)
+      void *pop(Stack *stack) {
+          Node *node = stack->head;
+          
+          if (node == NULL)     // 스택이 비어있는 경우
+              data == NULL;
+          else if (node == stack-> tail)     // 스택 요소가 단 한 개만 있는 경우
+          {
+              stack->head = stack->tail = NULL;
+              void *data = node->data;
+              free(node);
+              return data;
+          }
+          else     // 스택에 요소가 한 개 이상 
+          {
+              stack->head = stack->head->next;
+              void *data = node->data;
+              free(node);
+              return data;
+          }
+      }
+      
+      // peek 함수 : pop과 달리 최상위 요소를 꺼내기만 하고 스택에서 제거하지 않음. (이 장에서는 자세히 다루지 X)
+      ```
  
