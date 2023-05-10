@@ -333,8 +333,31 @@
           addHead(Queue, node);
       }
       
-      // dequeue 동작에 대한 함수
-      
+      // dequeue 동작에 대한 함수 (빈(empty)/단일 노드/다중 노드인 경우 나눠서 생각해야 함!)
+      void *dequeue(Queue *queue) {
+          Node *tmp = queue->head;
+          void *data;
+          
+          if (queue->head == NULL)     // 빈(empty) 큐인 경우
+              data == NULL;
+          else if (queue->head == queue->tail)     // 단일 노드인 경우
+          {
+              queue->head = queue->tail = NULL;
+              data = tmp->data;
+              free(tmp);
+          }
+          else     // 다중 노드인 경우
+          {
+              while (tmp->next != queue->tail)
+                  tmp = tmp->next;
+              queue->tail = tmpl
+              tmp = tmp->next;
+              queue->tail->next = NULL;
+              data = tmp->data;
+              free(tmp);
+          }
+          return data;
+      }
       ```
  
 - 스택(stack) - 단순 스택
