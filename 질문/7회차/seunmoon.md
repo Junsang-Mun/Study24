@@ -264,10 +264,19 @@
     
 >> 함수 포인터 DISPLAY : void* 형의 매개 변수를 입력받고, 아무 값도 반환하지 않는(void) 함수를 지칭  
     (이 함수의 목적 : 데이터 출력)  
+
+    ```c
+    typedef void(*DISPLAY) (void*);
+    ```  
+    
     
 >> 함수 포인터 COMPARE : 두 개의 포인터에 의해 참조되는 데이터를 비교하는 함수를 지칭  
    (데이터 비교해 -1, 0, 1 중 하나 반환)  
-  
+
+    ```c
+    typedef void(*COMPARE) (void*, void*));
+    ```  
+    
   
   
 - 연결 리스트(Linked list) - 단일 연결 리스트(Single-Linked List)  
@@ -275,7 +284,7 @@
     - 구조 : head node - n개의 node - tail node
     - 노드 연결하는 방법 : 노드를 연결하는 링크는 포인터를 이용해 구현
     - 특징 : 각 노드는 필요한 만큼 동적 할당 가능
-    - 장점 : 배열보다 유연성 (노드 추가&삭제 및 순서바꿈이 훨씬 간편)
+    - 배열과의 비교 : 배열보다 유연성 O(노드 추가&삭제 및 순서바꿈이 훨씬 간편), but 순회하기엔 처음부터 일일히 찾아가야하므로 더 느림
     - 이외 종류 : 단일 연결 리스트 외에도, 이중 연결 리스트(doubly linked list), 환형(순환) 연결 리스트 (circular linked list)가 있음  
     - ///code/// Node 구조체  
       
@@ -294,54 +303,39 @@
       
     - 연결 리스트의 기능을 지원할 수 있는 대표적 함수들  
       
-        - ///code/// 초기화 함수  
-            
-            ```c
-            void initializeList(LinkedList *List) {
-                list->head = NULL;
-                list->tail = NULL;
-                list->current = NULL;
-            }
-            ```
-            
-        - ///code/// head 노드에 데이터를 추가하는 함수  
-                    
-            ```c
-            void addHead(LinkedList *list, void* data) {
-                Node *node = (Node *)malloc(sizeof(Node));
-                node->data = data;
-                if (list->head == NULL) {
-                    list->tail = node;
-                    node->next = NULL;
-                }
-                else {
-                    node->next = list->head;
-                }
-                list->head = node;
-            }
-            ```
-            
-        - ///code/// tail 노드에 데이터를 추가하는 함수  
-                    
-            ```c
-            void addTail(LinkedList *list, void* data) {
-                Node *node = (Node *)malloc(sizeof(Node));
-                node->data = data;
-                node->next = NULL;
-                if (list->head == NULL) {
-                    list->head = node;
-                }
-                else {
-                    node->tail->next = node;
-                }
-                list->head = node;
-            }
-            ```
-            
-        - ///code/// head 노드를 삭제하는 함수
-        - ///code/// 특정 데이터가 저장된 노드에 대한 포인터를 반환하는 함수  
-        - ///code/// 연결 리스트를 출력하는 함수  
+        - void initializeList(LinkedList *List) : 초기화 함수  
+        - void addHead(LinkedList *list, void* data) : head 노드에 데이터를 추가하는 함수  
+        - void addTail(LinkedList *list, void* data) : tail 노드에 데이터를 추가하는 함수  
+        - void delete(LinkedList *, Node *) : head 노드를 삭제하는 함수
+        - Node *getNode(LinkedList *, COMPARE, void *) : 특정 데이터가 저장된 노드에 대한 포인터를 반환하는 함수  
+        - void displayLinkedList(LinkedList *, DISPLAY) : 연결 리스트를 출력하는 함수  
+        
+        
 - 큐(Queue) - 단순 선입선출 큐(simple first-in first-out queue)  
+
+    - 정의 : 대기열(waiting line)과 유사한 선형(linear) 데이터 구조로, 일반적으로 큐에 처음으로 추가된 요소가 가장 먼저 제거되는 구조  
+    - 구조 : 일반적으로 enqueue & dequeue 두 개의 주요 동작 사용  
+    - 특징 : 종종 연결 리스트를 이용해 구현  
+             (enqueue는 연결 리스트의 head에 노드를 추가, dequeue는 연결 리스트의 tail에서 노드를 제거)  
+    - ///code/// 연결리스트로 큐 타입을 정의해주고 기본적으로 필요한 함수 종류 알아보기
+    
+      ```c
+      // 큐를 지칭하는 타입 정의하기
+      typedef LinkedList Queue;
+      
+      // 초기화 동작에 대한 함수
+      void initializeQueue(Queue *queue) {
+         initializeList(queue);
+      }
+      
+      // enqueue 동작에 대한 함수
+      void enqueue(Queue *queue, void*node) {
+          addHead(Queue, node);
+      }
+      
+      // dequeue 동작에 대한 함수
+      
+      ```
  
 - 스택(stack) - 단순 스택
  
