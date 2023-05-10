@@ -316,7 +316,7 @@
     - 정의 : 대기열(waiting line)과 유사한 선형(linear) 데이터 구조로, 일반적으로 큐에 처음으로 추가된 요소가 가장 먼저 제거되는 구조  
     - 구조 : 일반적으로 enqueue & dequeue 두 개의 주요 동작 사용  
     - 특징 : 종종 연결 리스트를 이용해 구현  
-             (enqueue는 연결 리스트의 head에 노드를 추가, dequeue는 연결 리스트의 tail에서 노드를 제거)  
+             (enqueue는 연결 리스트의 head에 노드를 추가, dequeue는 연결 리스트의 tail에서 노드를 제거)    
     - ///code/// 연결리스트로 큐 타입을 정의해주고 기본적으로 필요한 함수 종류 알아보기
     
       ```c
@@ -361,6 +361,51 @@
       ```
  
 - 스택(stack) - 단순 스택
+
+    - 정의 : 요소가 최상위에 입력되고 최상위부터 꺼내지는 구조  
+    - 구조 : 선입후출(FIFO, First-In-Last-Out) 구조로 처음 입력된 요소가 가장 마지막에 꺼내지는 요소  
+    - 특징 : 종종 연결 리스트를 이용해 구현  
+             (addHead 함수를 이용하여 push함수 구현, pop 함수는 head 노드를 삭제하는 새로운 함수 추가 )
+    - ///code/// 연결리스트로 스택 타입을 정의해주고 기본적으로 필요한 함수 종류 알아보기
+    
+      ```c
+      // 스택을 지칭하는 타입 정의하기
+      typedef LinkedList Stack;
+      
+      // 초기화 동작에 대한 함수
+      void initializeStack(Stkack *stack) {
+         initializeList(stack);
+      }
+      
+      // push 동작에 대한 함수
+        void push(Stack *stack, void *data) {
+            addHead(stack, data);
+      }
+      
+      // pop 동작에 대한 함수 (빈(empty)/요소 하나/요소 한 개 이상인 경우 나눠서 생각해야 함!)
+      void *pop(Stack *stack) {
+          Node *node = stack->head;
+          
+          if (node == NULL)     // 스택이 비어있는 경우
+              data == NULL;
+          else if (node == stack-> tail)     // 스택 요소가 단 한 개만 있는 경우
+          {
+              stack->head = stack->tail = NULL;
+              void *data = node->data;
+              free(node);
+              return data;
+          }
+          else     // 스택에 요소가 한 개 이상 
+          {
+              stack->head = stack->head->next;
+              void *data = node->data;
+              free(node);
+              return data;
+          }
+      }
+      
+      // peek 함수 : pop과 달리 최상위 요소를 꺼내기만 하고 스택에서 제거하지 않음. (이 장에서는 자세히 다루지 X)
+      ```
  
 - 트리(tree) - 이진 트리(binary tree)  
  
