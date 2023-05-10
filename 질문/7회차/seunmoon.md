@@ -418,44 +418,56 @@
     
       ```c
       // 트리 노드를 나타내는 구조체
+      
       typedef struct _tree {
           void *data;
           struct _tree *left;
           struct _tree *right;
       } TreeNode;
-      
-      // 초기화 동작에 대한 함수
-      void initializeStack(Stkack *stack) {
-         initializeList(stack);
-      }
-      
-      // push 동작에 대한 함수
-        void push(Stack *stack, void *data) {
-            addHead(stack, data);
-      }
-      
-      // pop 동작에 대한 함수 (빈(empty)/요소 하나/요소 한 개 이상인 경우 나눠서 생각해야 함!)
-      void *pop(Stack *stack) {
-          Node *node = stack->head;
+        
           
-          if (node == NULL)     // 스택이 비어있는 경우
-              data == NULL;
-          else if (node == stack-> tail)     // 스택 요소가 단 한 개만 있는 경우
+      // 이진 검색 트리에 노드를 추가하는 insertNode 함수
+            // 노드 추가하려면 새로운 노드와 기존 노드 값 비교 필요해서 compare 있음
+            // TreeNode가 이중포인터로 전달되는 이유 : 포인터가 가리키는 값이 아니라 포인터 자체의 값을 바꿔야 하므로
+                ---> 자세히는 1장의 '다중 수준 간접 지정' 참고
+            
+      void insertNode(TreeNode **realRoot, COMAPRE compare, void *Data) { 
+          TreeNode *node = (TreeNode *) malloc(sizeof TreeNode));
+          node->data = data;
+          node->left = NULL;
+          node->right = NULL;
+          
+          TreeNode *root = *realRoot;
+          
+          if (root == NULL)     // 빈 트리인지 확인
           {
-              stack->head = stack->tail = NULL;
-              void *data = node->data;
-              free(node);
-              return data;
+              *realRoot = node;
+              return;
           }
-          else     // 스택에 요소가 한 개 이상 
+          
+          while(1)     // compare을 통해 left, right 결정
           {
-              stack->head = stack->head->next;
-              void *data = node->data;
-              free(node);
-              return data;
+              if (compare((root)->data, data) > 0)
+              {
+                  if ((root)->left != NULL)
+                      root = (root)->left;
+                  else
+                  {
+                      (root)->left = node;
+                      break;
+                  }
+              }
+              else
+              {
+                  if ((root)->right != NULL)
+                      root = (root)->right;
+                  else
+                  {
+                      (root)->right = node;
+                      break;
+                  }
+              }
           }
       }
-      
-      // peek 함수 : pop과 달리 최상위 요소를 꺼내기만 하고 스택에서 제거하지 않음. (이 장에서는 자세히 다루지 X)
       ```
  
