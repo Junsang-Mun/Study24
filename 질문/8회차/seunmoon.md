@@ -1,5 +1,5 @@
 # Chapter 7. 보안 이슈와 포인터의 오남용 (Security Issues and the Improper Use of Pointers)
-
+<br/>
 <details>
 <summary>part 0. 들어가기</summary>
 
@@ -26,10 +26,9 @@
   
 - CERT : C와 다른 언어에서의 보안 이슈를 더 포괄적으로 다루며 인터넷 보안 취약점에 대해 연구하는 조직    
 </details>
-  
-  
-  
-  
+<br/>
+<br/>
+<br/>
 <details>
 <summary>part 1. 포인터의 선언과 초기화 (Pointer Declaration and Initialization)</summary>
 
@@ -45,40 +44,77 @@
    int *ptr1, *ptr2;
    
    // 잘못된 예시
+   /* 얼핏 보기에 int형 포인터 두 개를 선언한 것처럼 착각할 수 있으나,
+      아래와 같이 쓴 경우는 포인터는 ptr1 뿐이고, ptr2는 그냥 int형이다. */
    int *ptr1, ptr2;
    ``` 
     
--     
+    
+- 타입 정의 (type definition)을 사용한 정의
+    - 매크로 정의 대신 타입 정의 이용하는 것은 좋은 습관
+    - 타입 정의 vs 매크로 정의
+        - 타입 정의 : 컴파일러가 범위 규칙*_1_(scope rule)에 대해 확인하도록 함  
+        - 매크로 정의 : 컴파일러에 따라 범위 규칙(scope rule)에 대해 확인을 못하는 경우도 존재
 
   
 </details>
-  
-  
-  
-  
+<br/>
+<br/>
+<br/>
 <details>
 <summary>part 2. 포인터의 사용 이슈 (Pointer Usage Issues)</summary>
 
 ## part 2. 포인터의 사용 이슈 (Pointer Usage Issues)
 ~내용~
 </details>
-  
-  
-  
-  
+<br/>
+<br/>
+<br/>
 <details>
 <summary>part 3. 메모리 해제 이슈 (Memory Deallocation Issues)</summary>
 
 ## part 3. 메모리 해제 이슈 (Memory Deallocation Issues)
 ~내용~
 </details>
-  
-  
-  
-  
+<br/>
+<br/>
+<br/>
 <details>
 <summary>part 4. 메모리 해제 이슈 (Using Static Analysis Tools)</summary>
 
 ## part 4. 메모리 해제 이슈 (Using Static Analysis Tools)
 ~내용~
+</details>
+<br/>
+<br/>
+<br/>
+<details>
+<summary>추가 공부 메모</summary>
+
+## 추가 공부 메모
+      
+    
+### _1_ 범위 규칙 (Scope Type)
+    
+    
+- 스코프(Scope)란?
+    -쉽게 말하자면, 어떤 변수의 범위(스코프)란 프로그램 중에서 그 변수가 효력을 발행하는 부분  
+    - 프로그램에서 바인딩(binding, 프로그램의 어떤 기본 단위가 가질 수 있는 구성 요소의 구체적인 값이나 성격을 확정하는 행위) 동작을 하는 Textual Region (변수, 함수 등의 유효 범위)    
+    - 바인딩 바뀌지 않는 영역 (Static 기준으로)  
+    
+    
+-  동작 스코프의 종류  
+    - 정적 스코프 (Static Scope) : 컴파일 시점에서 스코프 확정 (코드를 보고 스코프 구별 가능)  
+    - 동적 스코프 (Dynamic Scope) : 실행 시점에 스코프 확정 (실행 흐름을 따라가봐야 스코프 구별 가능)  
+    
+    
+- 레벨 스코프의 종류  
+    - 함수 스코프  
+    - 블록 스코프  
+    - 전역 스코프  
+    - 지역 스코  
+    
+    
+- Referencing Environment란?  
+    - 프로그램 실행 특정 포인트에서 활성화 되어 있는 바인딩들의 집합  
 </details>
