@@ -2,44 +2,27 @@
 <details>
 <summary>part1. 포인터의 선언과 초기화 (Pointer Declaration and Initialization)</summary>
 
-## 접은 제목
-접은 내용
+## part1. 포인터의 선언과 초기화 (Pointer Declaration and Initialization)
+~내용~
 </details>
 
->> Improper Pointer Declaration 160  
+<details>
+<summary>part2. 포인터의 사용 이슈 (Pointer Usage Issues)</summary>
 
->> Failure to Initialize a Pointer Before It Is Used 161  
+## part2. 포인터의 사용 이슈 (Pointer Usage Issues)
+~내용~
+</details>
 
->> Dealing with Uninitialized Pointers 162  
+<details>
+<summary>part3. 메모리 해제 이슈 (Memory Deallocation Issues)</summary>
 
-> ## Pointer Usage Issues 162  
+## part3. 메모리 해제 이슈 (Memory Deallocation Issues)
+~내용~
+</details>
 
->> Test for NULL 163  
+<details>
+<summary>part4. 메모리 해제 이슈 (Using Static Analysis Tools)</summary>
 
->> Misuse of the Dereference Operator 163  
-
->> Dangling Pointers 164  
-
->> Accessing Memory Outside the Bounds of an Array 164  
-
->> Calculating the Array Size Incorrectly 165  
-
->> Misusing the sizeof Operator 166  
-
->> Always Match Pointer Types 166  
-
->> Bounded Pointers 167  
-
->> String Security Issues 168  
-
->> Pointer Arithmetic and Structures 169  
-
->> Function Pointer Issues 170  
-
-> ## Memory Deallocation Issues 172  
-
->> Double Free 172  
-
->> Clearing Sensitive Data 173  
-
-> ## Using Static Analysis Tools 173
+## part4. 메모리 해제 이슈 (Using Static Analysis Tools)
+~내용~
+</details>
