@@ -1,9 +1,9 @@
-# Chapter7. 보안 이슈와 포인터의 오남용 (Security Issues and the Improper Use of Pointers)
+# Chapter 7. 보안 이슈와 포인터의 오남용 (Security Issues and the Improper Use of Pointers)
 
 <details>
-<summary>part0. 들어가기</summary>
+<summary>part 0. 들어가기</summary>
 
-## part0. 들어가기
+## part 0. 들어가기
 
 - 이 단원의 중요 포인트  
     - 포인터의 선언과 초기화  
@@ -29,31 +29,45 @@
   
   
   
+  
 <details>
-<summary>part1. 포인터의 선언과 초기화 (Pointer Declaration and Initialization)</summary>
+<summary>part 1. 포인터의 선언과 초기화 (Pointer Declaration and Initialization)</summary>
 
-## part1. 포인터의 선언과 초기화 (Pointer Declaration and Initialization)
+## part 1. 포인터의 선언과 초기화 (Pointer Declaration and Initialization)  
+- 포인터의 선언 / 포인터를 초기화 하지 않는다면 발생할 수 있는 문제에 대해 알아보기
+  
+   
+### 부적절한 포인터 선언 (Improper Pointer Declaration)
+
+  
+</details>
   
   
-</details>
-
+  
+  
 <details>
-<summary>part2. 포인터의 사용 이슈 (Pointer Usage Issues)</summary>
+<summary>part 2. 포인터의 사용 이슈 (Pointer Usage Issues)</summary>
 
-## part2. 포인터의 사용 이슈 (Pointer Usage Issues)
+## part 2. 포인터의 사용 이슈 (Pointer Usage Issues)
 ~내용~
 </details>
-
+  
+  
+  
+  
 <details>
-<summary>part3. 메모리 해제 이슈 (Memory Deallocation Issues)</summary>
+<summary>part 3. 메모리 해제 이슈 (Memory Deallocation Issues)</summary>
 
-## part3. 메모리 해제 이슈 (Memory Deallocation Issues)
+## part 3. 메모리 해제 이슈 (Memory Deallocation Issues)
 ~내용~
 </details>
-
+  
+  
+  
+  
 <details>
-<summary>part4. 메모리 해제 이슈 (Using Static Analysis Tools)</summary>
+<summary>part 4. 메모리 해제 이슈 (Using Static Analysis Tools)</summary>
 
-## part4. 메모리 해제 이슈 (Using Static Analysis Tools)
+## part 4. 메모리 해제 이슈 (Using Static Analysis Tools)
 ~내용~
 </details>
