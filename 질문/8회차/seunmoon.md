@@ -1,4 +1,8 @@
 # Chapter 7. 보안 이슈와 포인터의 오남용 (Security Issues and the Improper Use of Pointers)
+  
+  
+- 마냥 모든 내용이 동시에 보이게 작성하면 너무 길어져서 가독성이 떨어질 것 같아 각 part마다 접어두기를 하였다. 원하는 파트를 클릭하여 자유롭게 열고 닫으며 읽으면 된다.
+
 <br/>
 <details>
 <summary>part 0. 들어가기</summary>
