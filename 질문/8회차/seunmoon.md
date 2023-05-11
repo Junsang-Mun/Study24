@@ -34,8 +34,7 @@
 
 ## part 1. 포인터의 선언과 초기화 (Pointer Declaration and Initialization)  
 - 포인터의 선언 / 포인터를 초기화 하지 않는다면 발생할 수 있는 문제에 대해 알아보기
-  
-   
+<br/>
 ### 부적절한 포인터 선언 (Improper Pointer Declaration)
 - ///code/// 한 줄에 두 개의 포인터를 선언하고 싶은 경우  
   
@@ -55,7 +54,21 @@
     - 타입 정의 vs 매크로 정의
         - 타입 정의 : 컴파일러가 범위 규칙*_1_(scope rule)에 대해 확인하도록 함  
         - 매크로 정의 : 컴파일러에 따라 범위 규칙(scope rule)에 대해 확인을 못하는 경우도 존재
-
+    - ///code/// typedef를 이용한 선언(올바른 예시) & 지시자(directive)를 이용한 선언(잘못된 예시)
+        ```c
+        //올바른 예시
+        typedef int* PINT
+        PINT ptr1, ptr2;
+        
+        //잘못된 예시 -> 위의 예시 코드와 동일한 이유로 틀림
+        #define PINT int*
+        PINT ptr1, ptr2;
+        ```
+    
+<br/>
+    
+### 초기화되지 않은 포인터 (Failure to Initialize a Pointer Before It Is Used)
+    
   
 </details>
 <br/>
