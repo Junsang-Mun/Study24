@@ -1,9 +1,19 @@
-# Chapter7. 보안 이슈와 포인터의 옹남용 (Security Issues and the Improper Use of Pointers)
+# Chapter7. 보안 이슈와 포인터의 오남용 (Security Issues and the Improper Use of Pointers)
+
+<details>
+<summary>part0. 들어가기</summary>
+
+## part0. 들어가기
+  
+  
+</details>
+
 <details>
 <summary>part1. 포인터의 선언과 초기화 (Pointer Declaration and Initialization)</summary>
 
 ## part1. 포인터의 선언과 초기화 (Pointer Declaration and Initialization)
-~내용~
+  
+  
 </details>
 
 <details>
