@@ -1,6 +1,6 @@
 # Chapter7. 보안 이슈와 포인터의 옹남용 (Security Issues and the Improper Use of Pointers)
 <details>
-<summary>## 포인터의 선언과 초기화 (Pointer Declaration and Initialization)</summary>
+<summary>part1. 포인터의 선언과 초기화 (Pointer Declaration and Initialization)</summary>
 
 ## 접은 제목
 접은 내용
