@@ -33,8 +33,10 @@
 <summary>part 1. 포인터의 선언과 초기화 (Pointer Declaration and Initialization)</summary>
 
 ## part 1. 포인터의 선언과 초기화 (Pointer Declaration and Initialization)  
-- 포인터의 선언 / 포인터를 초기화 하지 않는다면 발생할 수 있는 문제에 대해 알아보기
-<br/>
+- 포인터의 선언 / 포인터를 초기화 하지 않는다면 발생할 수 있는 문제에 대해 알아보기  
+    
+<br/>  
+    
 ### 부적절한 포인터 선언 (Improper Pointer Declaration)  
     
 - ///code/// 한 줄에 두 개의 포인터를 선언하고 싶은 경우  
