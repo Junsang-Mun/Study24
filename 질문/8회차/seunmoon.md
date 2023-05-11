@@ -38,6 +38,17 @@
   
    
 ### 부적절한 포인터 선언 (Improper Pointer Declaration)
+- ///code/// 한 줄에 두 개의 포인터를 선언하고 싶은 경우  
+  
+   ```c
+   // 올바른 예시
+   int *ptr1, *ptr2;
+   
+   // 잘못된 예시
+   int *ptr1, ptr2;
+   ``` 
+    
+-     
 
   
 </details>
