@@ -62,15 +62,16 @@
         - 타입 정의 : 컴파일러가 범위 규칙*_1_(scope rule)에 대해 확인하도록 함  
         - 매크로 정의 : 컴파일러에 따라 범위 규칙(scope rule)에 대해 확인을 못하는 경우도 존재
     - ///code/// typedef를 이용한 선언(올바른 예시) & 지시자(directive)를 이용한 선언(잘못된 예시)
-        ```c
-        //올바른 예시
-        typedef int* PINT
-        PINT ptr1, ptr2;
-        
-        //잘못된 예시 -> 위의 예시 코드와 동일한 이유로 틀림
-        #define PINT int*
-        PINT ptr1, ptr2;
-        ```
+  
+       ```c
+       // 올바른 예시
+       typedef int* PINT
+       PINT ptr1, ptr2;
+
+       // 잘못된 예시 -> 위의 예시 코드와 동일한 이유로 틀림
+       #define PINT int*
+       PINT ptr1, ptr2;
+       ```
     
 <br/>
     
