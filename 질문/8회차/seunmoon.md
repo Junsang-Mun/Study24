@@ -35,18 +35,19 @@
 ## part 1. 포인터의 선언과 초기화 (Pointer Declaration and Initialization)  
 - 포인터의 선언 / 포인터를 초기화 하지 않는다면 발생할 수 있는 문제에 대해 알아보기
 <br/>
-### 부적절한 포인터 선언 (Improper Pointer Declaration)
+### 부적절한 포인터 선언 (Improper Pointer Declaration)  
+    
 - ///code/// 한 줄에 두 개의 포인터를 선언하고 싶은 경우  
   
-   ```c
-   // 올바른 예시
-   int *ptr1, *ptr2;
+    ```c
+    // 올바른 예시
+    int *ptr1, *ptr2;
    
-   // 잘못된 예시
-   /* 얼핏 보기에 int형 포인터 두 개를 선언한 것처럼 착각할 수 있으나,
-      아래와 같이 쓴 경우는 포인터는 ptr1 뿐이고, ptr2는 그냥 int형이다. */
-   int *ptr1, ptr2;
-   ``` 
+    // 잘못된 예시
+    /* 얼핏 보기에 int형 포인터 두 개를 선언한 것처럼 착각할 수 있으나,
+       아래와 같이 쓴 경우는 포인터는 ptr1 뿐이고, ptr2는 그냥 int형이다. */
+    int *ptr1, ptr2;
+    ``` 
     
     
 - 타입 정의 (type definition)을 사용한 정의
