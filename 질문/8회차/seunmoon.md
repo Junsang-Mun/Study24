@@ -155,7 +155,78 @@
 <summary>part 2. 포인터의 사용 이슈 (Pointer Usage Issues)</summary>
 
 ## part 2. 포인터의 사용 이슈 (Pointer Usage Issues)
-~내용~
+- 이 절에서 공부할 내용
+    - 역참조 연산자
+    - 배열 첨자(subscript)
+    - 문자열, 구조체, 함수 포인터에 관한 문제
+    
+<br/> 
+    
+- 버퍼 오버플로우 (buffer overflow)
+    - 보안 관점에서의 의미  
+        - 객체의 영역을 벗어난 영역의 메모리가 덮어 쓰일 때 발생하는 현상  
+    - 발생 원인
+        - 배열 요소에 접근할 때 사용하는 인덱스 값을 확인하지 X  
+        - 배열 포인터에 대한 포인터 연산을 할 때 주의를 기울이지 X  
+        - 표준 입력(stdin)에서 문자열을 읽어 들일 때 gets 같은 함수를 사용함  
+            -> 초기 설계의 문제로 버퍼 오버플로우가 발생한다는 치명적 오류로 인해 현재는 fgets를 용대신 사용  
+        - strcpy, strcat 등의 함수를 부적절하게 사용  
+    - 버퍼 오버플로우가 애플리케이션 외부에서 발생하는 경우  
+        : 즉, 덮어 쓰이는 메모리 영역이 타프로그램의 주소 공간일 경우  
+        -> OS가 segmentation fault를 발생시킴 & 프로그램 강제 종료  
+    - 버퍼 오버플로우가 애플리케이션 내부에서 발생하는 경우  
+        -> 데이터에 대해 허가되지 않은 접근 발생 or 코드의 다른 세그먼트로 제어가 넘어가 시스템 파괴  
+    - 버퍼 오버플로우가 스택 프레임 안에서 발생하는 경우
+        -> 스택 프레임의 복귀 주소 부분을 같은 시점에 생성된 악성 코드 주소로 덮어쓸 수 O
+    - 함수 반환 때 반환 주소가 악성 코드를 가리키는 경우
+        -> 제어가 악성 함수에 주어지면서 그 함수가 현재 사용자 권한 레벨에서 할 수 있는 모든 동작 가능
+   
+<br/>  
+
+### NULL 확인하기 (Test for NULL)
+    
+<br/>  
+    
+### 역참조 연산자의 잘못된 사용 (Misuse of the Dereference Operator)
+    
+<br/>  
+    
+### 댕글링 포인터 (Dangling Pointers)
+    
+<br/>  
+    
+### 배열의 범위를 벗어난 메모리 접근 (Accessing Memory Outside the Bounds of an Array)
+    
+<br/>  
+    
+### 배열 크기 계산 오류 (Calculating the Array Size Incorrectly)
+    
+<br/>  
+    
+### sizeof 연산자 오용 (Misusing the sizeof Operator)
+    
+<br/>  
+    
+### 항상 포인터 타입 일치시키기 (Always Match Pointer Types)
+    
+<br/>  
+    
+### 유계 포인터 (Bounded Pointers)
+    
+<br/>  
+    
+### 문자열 보안 이슈 (String Security Issues)
+    
+<br/>  
+    
+### 포인터 연산과 구조체 (Pointer Arithmetic and Structures)
+    
+<br/>  
+    
+### 함수 포인터 이슈 (Function Pointer Issues)
+    
+<br/>  
+
 </details>
 <br/>
 <br/>
