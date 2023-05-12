@@ -234,18 +234,36 @@
 <br/>  
     
 ### 댕글링 포인터 (Dangling Pointers)
+- 포인터가 해제된 메모리를 참조할 때 발생
+- 해제된 이후에 이 메모리 영역에 접근하려 하면 메모리의 내용이 변경 되었을 가능성 O
+- 이 메모리에 write 연산 실행 -> 메모리 손상 가능성 O
+- 이 메모리에 read 연산 실행 -> 유효하지 않은 데이터 반환 가능성 O\
+- 댕글링 포인터를 이용한 잠재적 취약점 공격 방법(exploit) 존재
+    : C++의 VTable(Virtual Table, 가상 method 기능 지원을 위해 사용되는 함수 포인터의 배열)의 취악졈 공격에 기반
+        -> 즉, VTable에 관련해서만 보안 이슈가 되므로 C언어와는 상관 X
     
 <br/>  
     
 ### 배열의 범위를 벗어난 메모리 접근 (Accessing Memory Outside the Bounds of an Array)
+- 프로그램이 배열에 할당된 범위를 벗어난 메모리 영역에 접근하는 것을 막을 방법은 없음
+- 첨자(subscript)로 계싼한 주소는 인덱스 값이 유효한지 확인하지 않음 -> 대표적 버퍼 오버플로우
     
 <br/>  
     
 ### 배열 크기 계산 오류 (Calculating the Array Size Incorrectly)
+- ///code/// 함수의 배열을 매개변수로 넘길 때는 항상 배열의 크기도 함께 넘기자!!
+    ```c
+    // 예시 함수(buffer 안의 데이터를 replacement라는 문자로 대체) 프로토타입
+        -> size 매개변수가 함수에서 버퍼의 끝을 넘어서서 문자를 기록하지 않도록 방지해줌
+        void replace(char buffer[], char replacement, size_t size);
+    ```
+- 위의 예시 함수와 달리 strcpy는 버퍼 오버플로우를 허용 -> 주의하자.
+
     
 <br/>  
     
 ### sizeof 연산자 오용 (Misusing the sizeof Operator)
+-
     
 <br/>  
     
