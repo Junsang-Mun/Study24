@@ -88,7 +88,64 @@
     <br/>
     
 ### 초기화되지 않은 포인터 처리하기 (Dealing with Uninitialized Pointers)
+- 초기화되지 않은 포인터를 다루는 세 가지 접근 방법에 대해 알아보도록 하겠다.
     
+    
+- 방법 1) 포인터는 언제나 NULL로 초기화하기
+    - ///code/// 사용 예제
+    
+        ```c
+        int *pi = NULL;
+        ... ...
+        if (pi == NULL) {
+            // 여기에서 pi 역참조 금지
+        }
+        else {
+            // 여기에 pi 사용하는 코드 작성
+        }
+        ```
+    
+- 방법 2)assert 함수 활용하기
+    - assert 함수란
+        - 디버깅을 위해서 사용하는 함수로
+        - 정해진 조건을 위반하는지를 검사하기 위한 목적으로 사용
+            -> 정해진 조건에 맞지 않는 경우 프로그램을 중단
+        - 헤더파일 : <assert.h>
+        - Visual Studio에서는 Debug 모드에서만 작동하며 Realease 모드에서는 동작하지 X
+        - ///code/// 사용 예제
+        
+            ```c
+            #define _CRT_SECURE_NO_WARNINGS
+            #include <stdio.h>
+            #include <string.h>
+            #include <assert.h> 
+
+            void copy(char *dest, char *src)
+            {
+                assert(dest != NULL);    // dest이 NULL이면 프로그램 중단
+                assert(src != NULL);     // src가 NULL이면 프로그램 중단
+
+                strcpy(dest, src);       // 문자열 복사
+            } 
+
+            int main()
+            {
+                char s1[100];
+                char *s2 = "Hi, I'm lunash0";
+
+                copy(s1, s2);     // 정상 동작
+
+                copy(NULL, s2);   // 프로그램 중단
+                // 출력되는 에러 메세지 --> Assertion failed: dest != NULL
+
+                return 0;
+            }
+            ```
+            
+- 서드파티 도구 활용하기
+    - 서드파티(Third Party)란?
+        - 프로그래밍을 도와주는 plug_in이나 library 등을 만드는 회사를 칭함
+        - 제조사와 사용자 이외 외부의 생산자를 가리키는 뜻으로 쓰임 - 위키
   
 </details>
 <br/>
