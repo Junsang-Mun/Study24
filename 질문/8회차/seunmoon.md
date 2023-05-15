@@ -36,10 +36,10 @@
   
 - CERT : C와 다른 언어에서의 보안 이슈를 더 포괄적으로 다루며 인터넷 보안 취약점에 대해 연구하는 조직    
 </details>
+
 <br/>
-<br/>
-<br/>
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━   
+<br/>  
 <details>
 <summary>part 1. 포인터의 선언과 초기화 (Pointer Declaration and Initialization)</summary>
 
@@ -161,10 +161,9 @@
         - 제조사와 사용자 이외 외부의 생산자를 가리키는 뜻으로 쓰임 - 위키
   
 </details>
-<br/>
-<br/>
-<br/>
+<br/>  
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  
+<br/>  
 <details>
 <summary>part 2. 포인터의 사용 이슈 (Pointer Usage Issues)</summary>
 
@@ -336,30 +335,27 @@
 <br/>  
 
 </details>
-<br/>
-<br/>
-<br/>
+<br/>  
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  
+<br/>  
 <details>
 <summary>part 3. 메모리 해제 이슈 (Memory Deallocation Issues)</summary>
 
 ## part 3. 메모리 해제 이슈 (Memory Deallocation Issues)
 ~내용~
 </details>
-<br/>
-<br/>
-<br/>
+<br/>  
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  
+<br/>  
 <details>
 <summary>part 4. 메모리 해제 이슈 (Using Static Analysis Tools)</summary>
 
 ## part 4. 메모리 해제 이슈 (Using Static Analysis Tools)
 ~내용~
 </details>
-<br/>
-<br/>
-<br/>
+<br/>  
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  
+<br/>  
 <details>
 <summary>추가 공부 메모</summary>
 
