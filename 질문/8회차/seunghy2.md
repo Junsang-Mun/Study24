@@ -73,6 +73,52 @@ btest.c:3:9: note: previous definition is here
 
 그렇다보니, testfx함수 내에서만 작동하길 바랬던 "#define TEST char"은 main 함수의 TEST a 까지 영향을 끼치면서, char형이 되버림.
 
+* "typedef"은 scope rule을 따른다
+
+코드
+
+````
+#include <stdio.h>
+
+typedef int TEST;
+
+void testfx(void)
+{
+	TEST a;
+
+	typedef char TEST;
+
+	TEST b;
+
+	printf("%zu\n", sizeof(a));
+	printf("%zu\n", sizeof(b));
+}
+
+int	main(void)
+{
+	TEST a;
+
+	printf("%zu\n", sizeof(a));
+	testfx();
+
+	return 0;
+}
+````
+
+컴파일링 문제 없음.
+
+결과값
+
+````
+4
+4
+1
+````
+
+main문의 TEST a와 testfx함수 내의 TEST a는 "typedef int TEST;" 의 영향을 받아 int형으로 되었고,
+
+"typedef char TEST;" 이후에 나온 TEST b는 char형이 되었음.
+
 포인터 사용 이슈
 -
 메모리 해제 이슈
