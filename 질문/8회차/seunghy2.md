@@ -26,19 +26,22 @@ scope rule : 변수 등이 함수 내에서 선언되었는지, 함수 밖에서
 
 void testfx(void)
 {
-	#define TEST char
-
 	TEST a;
 
+	#define TEST char
+
+	TEST b;
+
 	printf("%zu\n", sizeof(a));
+	printf("%zu\n", sizeof(b));
 }
 
 int	main(void)
 {
 	TEST a;
 
-	testfx();
 	printf("%zu\n", sizeof(a));
+	testfx();
 
 	return 0;
 }
@@ -47,7 +50,7 @@ int	main(void)
 해당 함수를 컴파일링 한 결과
 
 ````
-btest.c:7:10: warning: 'TEST' macro redefined [-Wmacro-redefined]
+btest.c:9:10: warning: 'TEST' macro redefined [-Wmacro-redefined]
         #define TEST char
                 ^
 btest.c:3:9: note: previous definition is here
@@ -60,10 +63,15 @@ btest.c:3:9: note: previous definition is here
 
 ````
 1
+4
 1
 ````
 
 위에서 말했듯이 "#define"은 preprocessor 단계에서 TEST라는 문자열을 int로 바꾸며 코드를 내려감.
+
+그러다가 두 번째 "#define TEST"를 만나면서 이후 아래의 코드들은 TEST라는 문자열을 char로 바꾸며 내려가게 됨.
+
+그렇다보니, testfx함수 내에서만 작동하길 바랬던 "#define TEST char"은 main 함수의 TEST a 까지 영향을 끼치면서, char형이 되버림.
 
 포인터 사용 이슈
 -
