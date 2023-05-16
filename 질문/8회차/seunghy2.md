@@ -33,49 +33,37 @@ void testfx(void)
 	printf("%zu\n", sizeof(a));
 }
 
-int main(void)
+int	main(void)
 {
-	#define TEST int
-
-	//TEST a;
-
-	testfx();
 	TEST a;
-	printf("%zu\n", sizeof(a));
-	testfx();
 
-	return (0);
+	testfx();
+	printf("%zu\n", sizeof(a));
+
+	return 0;
 }
 ````
 
 해당 함수를 컴파일링 한 결과
 
 ````
-atest.c:7:10: warning: 'TEST' macro redefined [-Wmacro-redefined]
+btest.c:7:10: warning: 'TEST' macro redefined [-Wmacro-redefined]
         #define TEST char
                 ^
-atest.c:3:9: note: previous definition is here
+btest.c:3:9: note: previous definition is here
 #define TEST int
         ^
-atest.c:17:10: warning: 'TEST' macro redefined [-Wmacro-redefined]
-        #define TEST int
-                ^
-atest.c:7:10: note: previous definition is here
-        #define TEST char
-                ^
-2 warnings generated.
+1 warning generated.
 ````
 
 결과값
 
 ````
 1
-4
 1
 ````
 
-결과값은 잘 나옴 (scope rule이 적용.. ?)
-작동하지 않도록 하는 방법을 모르겠음.
+위에서 말했듯이 "#define"은 preprocessor 단계에서 TEST라는 문자열을 int로 바꾸며 코드를 내려감.
 
 포인터 사용 이슈
 -
