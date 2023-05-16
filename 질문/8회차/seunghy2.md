@@ -11,9 +11,71 @@
 
 출처 : https://www.geeksforgeeks.org/typedef-versus-define-c/ 
 
+>Scope Rule
+
 scope rule : 변수 등이 함수 내에서 선언되었는지, 함수 밖에서 선언되었는지에 따라 함수 내에서 선언된 변수는 함수 내에서만 작동하도록 하는 규칙.
 
 * "#define"이 scope rule을 따르지 않는 경우를 위한 테스트
+
+코드
+
+````
+#include <stdio.h>
+
+#define TEST int
+
+void testfx(void)
+{
+	#define TEST char
+
+	TEST a;
+
+	printf("%zu\n", sizeof(a));
+}
+
+int main(void)
+{
+	#define TEST int
+
+	//TEST a;
+
+	testfx();
+	TEST a;
+	printf("%zu\n", sizeof(a));
+	testfx();
+
+	return (0);
+}
+````
+
+해당 함수를 컴파일링 한 결과
+
+````
+atest.c:7:10: warning: 'TEST' macro redefined [-Wmacro-redefined]
+        #define TEST char
+                ^
+atest.c:3:9: note: previous definition is here
+#define TEST int
+        ^
+atest.c:17:10: warning: 'TEST' macro redefined [-Wmacro-redefined]
+        #define TEST int
+                ^
+atest.c:7:10: note: previous definition is here
+        #define TEST char
+                ^
+2 warnings generated.
+````
+
+결과값
+
+````
+1
+4
+1
+````
+
+결과값은 잘 나옴 (scope rule이 적용.. ?)
+작동하지 않도록 하는 방법을 모르겠음.
 
 포인터 사용 이슈
 -
