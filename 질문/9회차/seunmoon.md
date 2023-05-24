@@ -92,7 +92,7 @@
 - 타입 퍼닝 (type punning) 이란? : 타임 시스템을 우회하여 하나의 값을 여러 가지 다른 형으로 취급하는 기법
   
   
-- 한 타입을 다른 타입으로 변환할 때 일반적으로 캐스팅을 통해 변환이 이루어지지만, 유니언을 이용할 수도 있응ㅁ
+- 한 타입을 다른 타입으로 변환할 때 일반적으로 캐스팅을 통해 변환이 이루어지지만, 유니언을 이용할 수도 있음
     
 <br/>  
     
@@ -103,6 +103,25 @@
 <br/>  
     
 ### restrict 키워드 사용하기 (Using the restrict Keyword)
+- C 컴파일러는 포인터가 기본적으로 에일리어스되었다고 가정함  
+    
+    
+- 포인터를 선언할 때 restrict 키워드를 이용해 컴파일러에 해당 포인터가 에일리어스되지 않음을 알릴 수 O  
+    
+    
+- restrict 키워드를 이용하는 표준 C 함수들의 prototype
+    - void *memcpy(void *restrict s1, const void *restrict s2, size_t n);
+    - char *strcpy(char *restirct s1, const char *restrict s2);
+    - char *strncpy(char *restirct s1, const char *restrict s2, size_t n);
+    - int printf(const char *restrict format, ...);
+    - int sprintf(char *restrict s, const  char *restrict format, ...);
+    - int snprintf(char *restrict s, size_t n, const  char *restrict format, ...);
+    - int scanf(const char *restrict format, ...);
+    
+    
+- restrict 키워드가 함축하고 있는 의미
+    - 컴파일러에게 restirct 키워드는 특정한 코드 최적화를 수행할 수 있음을 알리는 신호
+    - 프로그래머에게 restrict 키워드는 이 포인터가 절대 에일리어스되지 말아야하며, 에일리어스되었을 경우 그 결과는 정의되어 있지 
   
 </details>
 
