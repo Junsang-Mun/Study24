@@ -132,11 +132,13 @@
 <summary>part 3. 스레드와 포인터 (Threads and Pointers)</summary>
 
 ## part 3. 스레드와 포인터 (Threads and Pointers)
+- 다수의 스레드가 데이터를 공유할 때 발생할 수 있는 흔한 문제 중 한 가지  
+    - 데이터 손상 (corruption) : 한 스레드가 객체에 값을 기록하던 도중 실행 상태가 다른 스레드로 전환되면 객체는 일관성 없는 상태가 됨  
     
 <br/>  
     
 ### 스레드 간의 포인터 공유 (Sharing Pointers Between Threads)
-    
+- 
 <br/>  
     
 ### 함수 포인터를 이용한 콜백 함수 지원 (Using Function Pointers to Support Callbacks)
